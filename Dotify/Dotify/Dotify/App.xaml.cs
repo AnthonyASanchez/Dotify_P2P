@@ -11,7 +11,10 @@ namespace Dotify
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new CreateAccount();
+
+            // Initialize the Control Template for the CreateAccount page
+            
         }
 
         protected override void OnStart()
