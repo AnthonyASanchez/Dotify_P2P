@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dotify\Dotify.csproj">
-      <Project>{F223CD0E-65FA-4FC3-A5C0-E9015392F46F}</Project>
+      <Project>{2D4F4C30-77C0-4B33-8F5E-1C64F35C1F50}</Project>
       <Name>Dotify</Name>
     </ProjectReference>
   </ItemGroup>
