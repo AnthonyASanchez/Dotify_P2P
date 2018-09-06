@@ -3,34 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Dotify.LoginPage"
              BackgroundColor="#242424">
+    
     <StackLayout>
         
         <Label Text="Dotify"
-           HorizontalOptions="CenterAndExpand"
+           HorizontalOptions="Center"
            FontSize="50"
-           Margin="50 0 0 0"/>
+           Margin="0, 50, 0, 0"/>
     
         <Label Text="Username"
            FontSize="20"
            TextColor="White"
-           Margin="30 0 0 25"/>
+           Margin="25, 50, 0, 0"/>
         
         <Entry Placeholder="Username"
-               Margin="0 25 0 25"/>
+               Margin="25, 0, 25, 0"/>
         
         <Label Text="Password"
            FontSize="20"
            TextColor="White"
-           Margin="0 0 0 25"/>
+           Margin="25, 0, 0, 0"/>
         
         <Entry Placeholder="Password"
-               Margin="0 25 0 25"
-               IsPassword="true"/>
+               Margin="25, 0, 25, 0"
+               IsPassword="True"/>
         
         <Label Text="Forgot password?"
                TextColor="White"
                HorizontalOptions="End"
-               Margin="0 25 0 0"/>
+               Margin="0, 0, 25, 10"/>
         
         <Button Text="Sign in"
                 FontAttributes="Bold"
