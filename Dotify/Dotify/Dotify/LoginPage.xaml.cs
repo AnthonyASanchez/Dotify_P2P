@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace Dotify
 {
+    //Main Method
     public partial class LoginPage : ContentPage
     {
         public LoginPage()

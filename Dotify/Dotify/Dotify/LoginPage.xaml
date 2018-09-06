@@ -1,5 +1,47 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Dotify.LoginPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Dotify.LoginPage"
+             BackgroundColor="#242424">
+    <StackLayout>
+        
+        <Label Text="Dotify"
+           HorizontalOptions="CenterAndExpand"
+           FontSize="50"
+           Margin="50 0 0 0"/>
+    
+        <Label Text="Username"
+           FontSize="20"
+           TextColor="White"
+           Margin="30 0 0 25"/>
+        
+        <Entry Placeholder="Username"
+               Margin="0 25 0 25"/>
+        
+        <Label Text="Password"
+           FontSize="20"
+           TextColor="White"
+           Margin="0 0 0 25"/>
+        
+        <Entry Placeholder="Password"
+               Margin="0 25 0 25"
+               IsPassword="true"/>
+        
+        <Label Text="Forgot password?"
+               TextColor="White"
+               HorizontalOptions="End"
+               Margin="0 25 0 0"/>
+        
+        <Button Text="Sign in"
+                FontAttributes="Bold"
+                FontSize="20"/>
+        
+        <Button Text="Sign up"
+                FontAttributes="Bold"
+                FontSize="20"/>
+        
+        
+    </StackLayout>
+    
+    
 </ContentPage>
