@@ -12,6 +12,22 @@ namespace Dotify
         byte[] picture;
         byte[] music;
 
+        public Song()
+        {
+            title = artist = album = "";
+            picture = new byte[15];
+            music = new byte[15];
+        }
+
+        public Song(string name, string art, string alb, byte[] pic, byte[] song)
+        {
+            title = name;
+            artist = art;
+            album = alb;
+            picture = pic;
+            music = song;
+        }
+
         public string Title
         {
             get { return title; }
