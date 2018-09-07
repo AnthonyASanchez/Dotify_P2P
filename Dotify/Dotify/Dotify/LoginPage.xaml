@@ -1,45 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Dotify;assembly=Dotify"
              x:Class="Dotify.LoginPage"
              BackgroundColor="#242424">
     
     <StackLayout>
         
+        <Image Source="DotifyLogo.jpg"/>
+        
         <Label Text="Dotify"
-           HorizontalOptions="Center"
-           FontSize="50"
-           Margin="0, 50, 0, 0"/>
+               HorizontalOptions="Center"
+               FontSize="50"
+               TextColor="White"
+               Margin="0, 50, 0, 0"/>
     
         <Label Text="Username"
-           FontSize="20"
-           TextColor="White"
-           Margin="25, 50, 0, 0"/>
+               FontSize="20"
+               TextColor="White"
+               Margin="25, 50, 0, 0"/>
         
         <Entry Placeholder="Username"
+               x:Name="userNameEntry"
+               x:DataType="Entry"
+               TextColor="White"
+               PlaceholderColor="White"
                Margin="25, 0, 25, 0"/>
         
         <Label Text="Password"
-           FontSize="20"
-           TextColor="White"
-           Margin="25, 0, 0, 0"/>
+               FontSize="20"
+               TextColor="White"
+               Margin="25, 0, 0, 0"/>
         
         <Entry Placeholder="Password"
+               x:Name="passwordEntry"
+               x:DataType="Entry"
+               TextColor="White"
+               PlaceholderColor="White"
                Margin="25, 0, 25, 0"
                IsPassword="True"/>
         
         <Label Text="Forgot password?"
+               x:Name="forgotPasswordLabel"
                TextColor="White"
                HorizontalOptions="End"
                Margin="0, 0, 25, 10"/>
         
         <Button Text="Sign in"
+                x:Name="signInButton"
                 FontAttributes="Bold"
-                FontSize="20"/>
+                Margin="25, 10, 25, 0"
+                FontSize="20"
+                BackgroundColor="Gray"
+                TextColor="White"/>
         
         <Button Text="Sign up"
+                x:Name="signUpButton"
                 FontAttributes="Bold"
-                FontSize="20"/>
+                Margin="25, 10, 25, 0"
+                FontSize="20"
+                BackgroundColor="Gray"
+                TextColor="White"/>
+        
         
         
     </StackLayout>
