@@ -14,11 +14,17 @@
                FontSize="50"
                TextColor="White"
                Margin="0, 50, 0, 0"/>
+        
+        <Label x:Name="errorLabel"
+               TextColor="Red"
+               Margin="0, 20, 0, 0"
+               HorizontalOptions="Center"
+               IsVisible="false"/>
     
         <Label Text="Username"
                FontSize="20"
                TextColor="White"
-               Margin="25, 50, 0, 0"/>
+               Margin="25, 0, 0, 0"/>
         
         <Entry Placeholder="Username"
                x:Name="userNameEntry"
@@ -48,6 +54,7 @@
         
         <Button Text="Sign in"
                 x:Name="signInButton"
+                Clicked="SignIn_onClicked"
                 FontAttributes="Bold"
                 Margin="25, 10, 25, 0"
                 FontSize="20"
@@ -56,12 +63,18 @@
         
         <Button Text="Sign up"
                 x:Name="signUpButton"
+                Clicked="SignUp_onClicked"
                 FontAttributes="Bold"
                 Margin="25, 10, 25, 0"
                 FontSize="20"
                 BackgroundColor="Gray"
                 TextColor="White"/>
         
+        <Label x:Name="userTest"
+               TextColor="White"/>
+        
+        <Label x:Name="passTest"
+               TextColor="White"/>
         
         
     </StackLayout>
