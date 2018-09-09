@@ -26,12 +26,12 @@ namespace Dotify
             var userName = userNameEntry.Text;
             var password = passwordEntry.Text;
 
-            if(String.IsNullOrEmpty(userName)){
-                errorLabel.Text = emptyEntryError;
-            }
+            //if(String.IsNullOrEmpty(userName)){
+            //    errorLabel.Text = emptyEntryError;
+            //}
 
-            userTest.Text = userName;
-            passTest.Text = password;
+            //userTest.Text = userName;
+            //passTest.Text = password;
 
         }
 

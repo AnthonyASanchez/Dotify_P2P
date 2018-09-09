@@ -50,7 +50,7 @@
                 Type=RelativeToParent,
                 Property=X,
                 Factor=1,
-                Constant=230}"
+                Constant=255}"
                 Clicked="CreateAccountButtonClicked"
                 IsEnabled="False"/>
             
@@ -72,7 +72,7 @@
                 x:Name="CreateAccountPasswordEntry"
                 Placeholder="Password"
                 IsPassword="True"
-                TextChanged="CreateAccountUsernameTextChanged"/>
+                TextChanged="CreateAccountPasswordTextChanged"/>
             <Label
                 x:Name="CreateAccountPasswordError"
                 TextColor="IndianRed"
@@ -90,6 +90,31 @@
                 TextColor="IndianRed"
                 IsVisible="False"
                 FontSize="13"
+                />
+            <Picker
+                x:Name="SecurityPicker1"
+                x:Uid="SecurityPicker1"
+                Title="Security 1"
+                SelectedIndexChanged="OnPickerSelectedItem"
+                />
+            <Entry
+                x:Name="SecurityEntry1"
+                Placeholder="Security Answer 1"
+                IsEnabled="False"
+                TextChanged="SecurityEntryTextChanged"
+                />
+            <Picker
+                x:Name="SecurityPicker2"
+                x:Uid="SecurityPicker2"
+                Title="Security 2"
+                SelectedIndexChanged="OnPickerSelectedItem"
+                IsEnabled="False"
+                />
+            <Entry
+                x:Name="SecurityEntry2"
+                Placeholder="Security Answer 2"
+                IsEnabled="False"
+                TextChanged="SecurityEntryTextChanged"
                 />
         </StackLayout>
     </StackLayout>
