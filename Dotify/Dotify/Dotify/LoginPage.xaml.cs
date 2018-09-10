@@ -18,6 +18,13 @@ namespace Dotify
         {
             Console.WriteLine("Start");
             InitializeComponent();
+
+            // Check whether the user is logged in
+            SystemCache sysCache = JsonUtil.GetJsonSystemCache();
+            if (sysCache != null && sysCache.isLoggedIn == true)
+            {
+                Navigation.PushModalAsync(new MainPage());
+            }
         }
 
         //Sign in button click

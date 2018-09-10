@@ -219,6 +219,16 @@ namespace Dotify
             // Save the JSon object to file
             JsonUtil.SaveJsonToFile(jsonString, JsonUtil.USER_JSON_FILE);
 
+            // Create a SystemCache object and save it to disk
+            SystemCache systemCache = new SystemCache();
+            systemCache.isLoggedIn = true;
+            string systemCacheString = JsonUtil.Stringify(systemCache);
+            JsonUtil.SaveJsonToFile(jsonString, JsonUtil.SYSTEM_CACHE_FILE);
+
+
+            // Remove the Account Creation and Login page from the stack
+            Navigation.PopModalAsync(false);
+
             // Move to the MainPage after account creation
             Navigation.PushModalAsync(new MainPage());
         }
