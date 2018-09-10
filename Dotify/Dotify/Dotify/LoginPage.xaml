@@ -7,7 +7,6 @@
     
     <StackLayout>
         
-        <Image Source="DotifyLogo.jpg"/>
         
         <Label Text="Dotify"
                HorizontalOptions="Center"
@@ -16,10 +15,11 @@
                Margin="0, 50, 0, 0"/>
         
         <Label x:Name="errorLabel"
-               TextColor="Red"
+               Text="Hello"
+               TextColor="Transparent"
                Margin="0, 20, 0, 0"
                HorizontalOptions="Center"
-               IsVisible="false"/>
+               IsVisible="true"/>
     
         <Label Text="Username"
                FontSize="20"
@@ -29,6 +29,7 @@
         <Entry Placeholder="Username"
                x:Name="userNameEntry"
                x:DataType="Entry"
+               Focused="Handle_Focused"
                TextColor="White"
                PlaceholderColor="White"
                Margin="25, 0, 25, 0"/>
@@ -41,6 +42,7 @@
         <Entry Placeholder="Password"
                x:Name="passwordEntry"
                x:DataType="Entry"
+               Focused="Handle_Focused"
                TextColor="White"
                PlaceholderColor="White"
                Margin="25, 0, 25, 0"

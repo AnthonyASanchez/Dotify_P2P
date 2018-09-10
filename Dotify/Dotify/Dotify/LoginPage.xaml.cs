@@ -14,13 +14,14 @@ namespace Dotify
     {
         const string emptyEntryError = "Username or Password cannot be empty";
         const string wrongPasswordError = "Invalid Username or Password";
+        SystemCache sysCache;
+
         public LoginPage()
         {
-            Console.WriteLine("Start");
             InitializeComponent();
 
             // Check whether the user is logged in
-            SystemCache sysCache = JsonUtil.GetJsonSystemCache();
+            sysCache = JsonUtil.GetJsonSystemCache();
             if (sysCache != null && sysCache.isLoggedIn == true)
             {
                 Navigation.PushModalAsync(new MainPage());
@@ -30,10 +31,32 @@ namespace Dotify
         //Sign in button click
         private void SignIn_onClicked(object sender, EventArgs e)
         {
+            //Declare a variable to tempary store username and password
             var userName = userNameEntry.Text;
             var password = passwordEntry.Text;
 
+
+            //Get the user profile information
             ProfileInfo user = JsonUtil.GetJsonUser();
+
+
+            //Check weather username or password entry is empty or contained white spaces
+            if(String.IsNullOrWhiteSpace(userName) || String.IsNullOrWhiteSpace(password)){
+                errorLabel.Text = emptyEntryError;
+                errorLabel.TextColor = Color.Red;
+            }
+            //Check if the entered password is the same as the user set password
+            else if(user.username.Equals(userName) && user.password.Equals(password)){
+                errorLabel.TextColor = Color.Transparent;
+                sysCache.isLoggedIn = true;
+                Navigation.PushModalAsync(new MainPage());
+            }
+            //Username or password did not match
+            else{
+                errorLabel.Text = wrongPasswordError;
+                errorLabel.TextColor = Color.Red;
+            }
+
         }
 
         //Sign up button click
