@@ -20,18 +20,12 @@ namespace Dotify
         public string securityAnswer1 { get; set; }
         [DataMember(Name = "Security_Answer_2")]
         public string securityAnswer2 { get; set; }
+        [DataMember(Name = "Join_Data")]
+        public DateTime dateJoined { get; set; }
         [DataMember(Name = "Search_History")]
         public List<string> searchHist;
         [DataMember(Name = "Play_History")]
         public List<string> playHist;
-
-        public ProfileInfo()
-        {
-            username = "";
-            password = "";
-            searchHist = new List<string>();
-            playHist = new List<string>();
-        }
 
         public ProfileInfo(string user, string pass, string question1, string question2,
             string answer1, string answer2)
@@ -44,6 +38,7 @@ namespace Dotify
             securityAnswer2 = answer2;
             searchHist = new List<string>();
             playHist = new List<string>();
+            dateJoined = DateTime.Today;
         }
 
         public void AddSearchInfo(string info)
