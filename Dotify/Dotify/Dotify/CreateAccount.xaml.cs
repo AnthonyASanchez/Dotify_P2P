@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using System.Runtime.Serialization.Json;
+using Newtonsoft.Json;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -194,7 +194,11 @@ namespace Dotify
             }
         }
 
-        
+        /// <summary>
+        /// Once the account button is clicked, allows the creation of a user object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void CreateAccountButtonClicked(object sender, EventArgs args)
         {
             // Retrieve all of the entries
@@ -209,8 +213,14 @@ namespace Dotify
             ProfileInfo userProfile = new ProfileInfo(username, password, 
                 securityQuestion1, securityQuestion2, securityAnswer1, securityAnswer2);
 
-            //DataContractJsonSerialize/*r*/
+            // The json object in string mode
+            string jsonString = JsonUtil.Stringify(userProfile);
 
+            // Save the JSon object to file
+            JsonUtil.SaveJsonToFile(jsonString, JsonUtil.USER_JSON_FILE);
+
+            // Move to the MainPage after account creation
+            Navigation.PushModalAsync(new MainPage());
         }
 
         /// <summary>
@@ -220,7 +230,7 @@ namespace Dotify
         /// <param name="args">The arguments passed in as part of this event.</param>
         private void BackButtonClicked(object sender, EventArgs args)
         {
-
+            Navigation.PopModalAsync();
         }
 
         //------------------------------ Picker Methods ------------------------------

@@ -26,13 +26,7 @@ namespace Dotify
             var userName = userNameEntry.Text;
             var password = passwordEntry.Text;
 
-            //if(String.IsNullOrEmpty(userName)){
-            //    errorLabel.Text = emptyEntryError;
-            //}
-
-            //userTest.Text = userName;
-            //passTest.Text = password;
-
+            ProfileInfo user = JsonUtil.GetJsonUser();
         }
 
         //Sign up button click

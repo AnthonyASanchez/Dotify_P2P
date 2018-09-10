@@ -9,21 +9,21 @@ namespace Dotify
     class ProfileInfo
     {
         [DataMember(Name = "username")]
-        string username { get; set; }
+        public string username { get; set; }
         [DataMember(Name = "password")]
-        string password { get; set; }
+        public string password { get; set; }
         [DataMember(Name = "Security_Question_1")]
-        string securityQuestion1 { get; set; }
+        public string securityQuestion1 { get; set; }
         [DataMember(Name = "Security_Question_2")]
-        string securityQuestion2 { get; set; }
+        public string securityQuestion2 { get; set; }
         [DataMember(Name = "Security_Answer_1")]
-        string securityAnswer1 { get; set; }
+        public string securityAnswer1 { get; set; }
         [DataMember(Name = "Security_Answer_2")]
-        string securityAnswer2 { get; set; }
+        public string securityAnswer2 { get; set; }
         [DataMember(Name = "Search_History")]
-        List<string> searchHist;
+        public List<string> searchHist;
         [DataMember(Name = "Play_History")]
-        List<string> playHist;
+        public List<string> playHist;
 
         public ProfileInfo()
         {
