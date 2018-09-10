@@ -15,6 +15,14 @@ namespace Dotify
 		public Profile ()
 		{
 			InitializeComponent ();
+
+            // Retrieve the stored ProfileInfo information
+            ProfileInfo user = JsonUtil.GetJsonUser();
+
+            // Initialize the ProfileUsernameLabel with the user's username
+            ProfileUsernameLabel.Text = user.username;
+            // Initialize the date that the user has joined in ProfileDateJoinedEntry
+            ProfileDateJoinedEntry.Text = user.dateJoined.ToShortDateString();
 		}
 	}
 }
