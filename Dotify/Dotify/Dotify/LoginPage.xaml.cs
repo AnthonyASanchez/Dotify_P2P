@@ -9,12 +9,39 @@ using Xamarin.Forms.Xaml;
 
 namespace Dotify
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class LoginPage : ContentPage
     {
+        const string emptyEntryError = "Username or Password cannot be empty";
+        const string wrongPasswordError = "Invalid Username or Password";
         public LoginPage()
         {
+            Console.WriteLine("Start");
             InitializeComponent();
+
+            // Check whether the user is logged in
+            SystemCache sysCache = JsonUtil.GetJsonSystemCache();
+            if (sysCache != null && sysCache.isLoggedIn == true)
+            {
+                Navigation.PushModalAsync(new MainPage());
+            }
         }
+
+        //Sign in button click
+        private void SignIn_onClicked(object sender, EventArgs e)
+        {
+            var userName = userNameEntry.Text;
+            var password = passwordEntry.Text;
+
+            ProfileInfo user = JsonUtil.GetJsonUser();
+        }
+
+        //Sign up button click
+        private void SignUp_onClicked(object sender, EventArgs e)
+        {
+            //Open create account page
+            Navigation.PushModalAsync(new CreateAccount());
+        }
+
     }
 }

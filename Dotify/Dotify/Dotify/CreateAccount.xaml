@@ -6,8 +6,6 @@
     <StackLayout>
         <RelativeLayout
             VerticalOptions="Start">
-            <Button
-                />
             <BoxView
                 Color="DarkGray"
                 RelativeLayout.YConstraint="{ConstraintExpression
@@ -19,20 +17,104 @@
                 Type=RelativeToParent,
                 Property=Width}"
              />
+            <Button
+                x:Name="CreateAccountBackButton"
+                BackgroundColor="Transparent"
+                Text="&#60; Back"
+                TextColor="Black"
+                HeightRequest="40"
+                RelativeLayout.YConstraint="{ConstraintExpression
+                Type=RelativeToParent,
+                Property=Y,
+                Factor=1,
+                Constant=1}"
+                RelativeLayout.XConstraint="{ConstraintExpression
+                Type=RelativeToParent,
+                Property=X,
+                Factor=1,
+                Constant=-10}"
+                Clicked="BackButtonClicked"
+                />
+            <Button
+                x:Name="CreateAccountButton"
+                BackgroundColor="Transparent"
+                Text="Create Account"
+                TextColor="Gray"
+                HeightRequest="40"
+                RelativeLayout.YConstraint="{ConstraintExpression
+                Type=RelativeToParent,
+                Property=Y,
+                Factor=1,
+                Constant=1}"
+                RelativeLayout.XConstraint="{ConstraintExpression
+                Type=RelativeToParent,
+                Property=X,
+                Factor=1,
+                Constant=255}"
+                Clicked="CreateAccountButtonClicked"
+                IsEnabled="False"/>
+            
         </RelativeLayout>
 
         <StackLayout
             Margin="0, 10, 0, 0">
             <Entry
-                Placeholder="Username"/>
+                x:Name="CreateAccountUsernameEntry"
+                Placeholder="Username"
+                TextChanged="CreateAccountUsernameTextChanged"/>
+            <Label
+                x:Name="CreateAccountUsernameError"
+                TextColor="IndianRed"
+                Text="Username does not meet requirements."
+                IsVisible="False"
+                FontSize="13"/>
             <Entry 
+                x:Name="CreateAccountPasswordEntry"
                 Placeholder="Password"
-                IsPassword="True"/>
+                IsPassword="True"
+                TextChanged="CreateAccountPasswordTextChanged"/>
+            <Label
+                x:Name="CreateAccountPasswordError"
+                TextColor="IndianRed"
+                Text="Password does not meet requirements."
+                IsVisible="False"
+                FontSize="13"/>
             <Entry
+                x:Name="CreateAccountVerifyPasswordEntry"
                 Placeholder="Verify Password"
-                IsPassword="True"/>
-            <Button
-                Text="Create Account"
+                IsPassword="True"
+                TextChanged="CreateAccountVerifyPasswordTextChanged"/>
+            <Label
+                x:Name="CreateAccountVerifyPasswordError"
+                Text="Passwords do not match."
+                TextColor="IndianRed"
+                IsVisible="False"
+                FontSize="13"
+                />
+            <Picker
+                x:Name="SecurityPicker1"
+                x:Uid="SecurityPicker1"
+                Title="Security 1"
+                SelectedIndexChanged="OnPickerSelectedItem"
+                />
+            <Entry
+                x:Name="SecurityEntry1"
+                Placeholder="Security Answer 1"
+                IsEnabled="False"
+                TextChanged="SecurityEntryTextChanged"
+                />
+            <Picker
+                x:Name="SecurityPicker2"
+                x:Uid="SecurityPicker2"
+                Title="Security 2"
+                SelectedIndexChanged="OnPickerSelectedItem"
+                IsEnabled="False"
+                />
+            <Entry
+                x:Name="SecurityEntry2"
+                Placeholder="Security Answer 2"
+                IsEnabled="False"
+                TextChanged="SecurityEntryTextChanged"
                 />
         </StackLayout>
     </StackLayout>

@@ -9,18 +9,20 @@
                 <local:SongBarViewModel />
             </Grid.BindingContext>
             <Grid.RowDefinitions>
-                <RowDefinition Height="24" />
-                <RowDefinition Height="24" />
+                <RowDefinition Height="14" />
+                <RowDefinition Height="18" />
+                <RowDefinition Height="18" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="48" />
             </Grid.ColumnDefinitions>
-            <Label Text="Name of the song" Margin ="5,0,0,0"  FontSize="16" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#242424" Grid.Row="0" Grid.Column="0"/>
-            <Label Text="Artist of the song" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#242424" Grid.Row="1" Grid.Column="0"/>
+            <Slider Value="{Binding CurrentTime}" />
+            <Label Text="Name of the song" Margin ="5,0,0,0"  FontSize="16" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#242424" Grid.Row="1" Grid.Column="0"/>
+            <Label Text="Artist of the song" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#242424" Grid.Row="2" Grid.Column="0"/>
             <Image Source= "{Binding IconPath}" 
                    Grid.RowSpan="2" 
-                   Grid.Row="0"
+                   Grid.Row="1"
                    Grid.Column="1">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer

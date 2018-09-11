@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+using Plugin.SimpleAudioPlayer;
 
 namespace Dotify
 {
@@ -19,6 +19,12 @@ namespace Dotify
         //The path that will be used.
         string _iconPath = "play_icon.png";
 
+        //Audio player.
+        ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+
+        //Current position the player is at.
+        double _currentTime;        
+
         //Event provided by the INotifyPropertyChange, will be used for changes to iconSources.
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,10 +36,12 @@ namespace Dotify
         /// </summary>
         public SongBarViewModel()
         {
+            PlayNewSong("unused");
             changeIconCommand = new Command(() =>
             {
                 SetNewPath();
                 ChangeMusicStatus();
+                CurrentTime = player.CurrentPosition;
             });
         }
 
@@ -51,6 +59,21 @@ namespace Dotify
             get { return _iconPath; }
         }
 
+        //Public property to be used for notify SongBarView
+        public double CurrentTime
+        {
+            set
+            {
+                if (_currentTime != value)
+                {
+                    _currentTime = value;
+                    player.Seek(value);
+                    OnPropertyChanged("CurrentTime");
+                }
+            }
+            get { return _currentTime; }
+        }
+
         /// <summary>
         /// Called by ChangeIconCommand, when icon is pressed, changes IconPath Property.
         /// </summary>
@@ -60,14 +83,24 @@ namespace Dotify
             IconPath = _iconSources[(_iconSelector ? 1 : 0)];
         }
 
-        void ChangeMusicStatus() {
-            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+        /// <summary>
+        /// Changes the current song.
+        /// </summary>
+        /// <param name="MediaFileName">The file to be played</param>
+        public void PlayNewSong(String MediaFileName)
+        {
             player.Load("sample.mp3");
+            //player.Play();
+        }
+
+        /// <summary>
+        /// Changes the status of the player.
+        /// </summary>
+        void ChangeMusicStatus() {
             if (_iconSelector)
                 player.Play();
             else
                 player.Pause();
-            
         }
 
         //ICommand implementations
