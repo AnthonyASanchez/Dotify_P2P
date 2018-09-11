@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Security.Cryptography;
 //This class is use for hashing user information
 namespace Dotify
 {
