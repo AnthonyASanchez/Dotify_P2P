@@ -6,15 +6,12 @@
              BackgroundColor="#242424">
     
     <StackLayout>
-        
-        
-        <Label Text="Dotify"
+      <Label Text="Dotify"
                HorizontalOptions="Center"
                FontSize="50"
                TextColor="White"
                Margin="0, 50, 0, 0"/>
-        
-        <Label x:Name="errorLabel"
+      <Label x:Name="errorLabel"
                Text="Hello"
                TextColor="Transparent"
                Margin="0, 20, 0, 0"

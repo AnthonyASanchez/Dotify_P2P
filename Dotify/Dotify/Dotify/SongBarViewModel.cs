@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Plugin.SimpleAudioPlayer;
+using System.Diagnostics;
+using System.Reflection;
+using System.IO;
 
 namespace Dotify
 {
@@ -17,31 +18,24 @@ namespace Dotify
         bool _iconSelector = false;
 
         //The path that will be used.
-        string _iconPath = "play_icon.png";
-
-        //Audio player.
-        ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-
-        //Current position the player is at.
-        double _currentTime;        
+        static string _iconPath = "play_icon.png";       
 
         //Event provided by the INotifyPropertyChange, will be used for changes to iconSources.
         public event PropertyChangedEventHandler PropertyChanged;
 
         //Gesture command.
-        ICommand changeIconCommand;
+        static ICommand changeIconCommand;
 
         /// <summary>
         /// Constructor which sets commands of ICommand interface to be used by SongBarView.
         /// </summary>
         public SongBarViewModel()
         {
-            PlayNewSong("unused");
+           SongController.LoadDefaultSong();
             changeIconCommand = new Command(() =>
             {
                 SetNewPath();
                 ChangeMusicStatus();
-                CurrentTime = player.CurrentPosition;
             });
         }
 
@@ -59,48 +53,24 @@ namespace Dotify
             get { return _iconPath; }
         }
 
-        //Public property to be used for notify SongBarView
-        public double CurrentTime
-        {
-            set
-            {
-                if (_currentTime != value)
-                {
-                    _currentTime = value;
-                    player.Seek(value);
-                    OnPropertyChanged("CurrentTime");
-                }
-            }
-            get { return _currentTime; }
-        }
-
         /// <summary>
         /// Called by ChangeIconCommand, when icon is pressed, changes IconPath Property.
         /// </summary>
-        void SetNewPath()
+        public void SetNewPath()
         {
             _iconSelector = !_iconSelector;
             IconPath = _iconSources[(_iconSelector ? 1 : 0)];
         }
 
         /// <summary>
-        /// Changes the current song.
-        /// </summary>
-        /// <param name="MediaFileName">The file to be played</param>
-        public void PlayNewSong(String MediaFileName)
-        {
-            player.Load("sample.mp3");
-            //player.Play();
-        }
-
-        /// <summary>
         /// Changes the status of the player.
         /// </summary>
         void ChangeMusicStatus() {
-            if (_iconSelector)
-                player.Play();
+            if (_iconSelector) {
+                SongController.PlaySong();
+            }
             else
-                player.Pause();
+                SongController.PauseSong();
         }
 
         //ICommand implementations

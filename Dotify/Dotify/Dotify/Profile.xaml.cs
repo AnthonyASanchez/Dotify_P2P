@@ -15,7 +15,6 @@ namespace Dotify
 		public Profile ()
 		{
 			InitializeComponent ();
-
             // Retrieve the stored ProfileInfo information
             ProfileInfo user = JsonUtil.GetJsonUser();
 

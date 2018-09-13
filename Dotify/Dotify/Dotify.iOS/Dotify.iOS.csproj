@@ -166,7 +166,4 @@
       <Name>Dotify</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sample.mp3" />
-  </ItemGroup>
 </Project>

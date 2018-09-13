@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Dotify
 {
+    [DataContract]
     class Song
     {
+        [DataMember (Name = "title")]
         string title;
+        [DataMember(Name = "artist")]
         string artist;
+        [DataMember(Name = "album")]
         string album;
+        [DataMember(Name = "picture")]
         byte[] picture;
+        [DataMember(Name = "music")]
         byte[] music;
 
         public Song()
