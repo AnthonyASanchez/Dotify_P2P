@@ -77,7 +77,7 @@
             <Label
                 x:Name="CreateAccountPasswordError"
                 TextColor="IndianRed"
-                Text="Password does not meet requirements."
+                Text="Password must contain atleast one of (a-z, A-Z, 0-9, Special Character)"
                 IsVisible="False"
                 FontSize="13"/>
             <Entry

@@ -40,6 +40,15 @@ namespace Dotify
             // Populate the Pickers
             SecurityPicker1.ItemsSource = securityQuestions;
             SecurityPicker2.ItemsSource = securityQuestions;
+
+            // Check if the user has an account in the system and display a 
+            // warning that their previous account is going to be deleted
+            ProfileInfo user = JsonUtil.GetJsonUser();
+            if (user != null)
+            {
+                DisplayAlert("Warning!", "An account already exists, creating an account" +
+                    "will delete the existing account.", "OK");
+            }
         }
 
         // ------------------------------ Entry Methods ------------------------------
