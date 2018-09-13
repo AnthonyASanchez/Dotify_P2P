@@ -5,7 +5,19 @@
              Title="Search">
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Song Search Placeholder"></SearchBar>
+            <SearchBar x:Name="MainSearchBar" SearchButtonPressed="MainSearchBar_SearchButtonPressed"></SearchBar>
+            <ListView x:Name="MainListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell
+                    Text="{Binding Title}" 
+                    TextColor="Black"
+                    Detail="{Binding Artist}" 
+                    DetailColor="Gray"
+                        />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
