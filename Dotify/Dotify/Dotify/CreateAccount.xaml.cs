@@ -46,8 +46,11 @@ namespace Dotify
             ProfileInfo user = JsonUtil.GetJsonUser();
             if (user != null)
             {
-                DisplayAlert("Warning!", "An account already exists, creating an account" +
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Warning!", "An account already exists, creating an account" +
                     "will delete the existing account.", "OK");
+                });
             }
         }
 
@@ -212,11 +215,11 @@ namespace Dotify
         {
             // Retrieve all of the entries
             string username = CreateAccountUsernameEntry.Text;
-            string password = CreateAccountPasswordEntry.Text;
+            string password = Security.Hash(CreateAccountPasswordEntry.Text);
             string securityQuestion1 = (string)SecurityPicker1.SelectedItem;
-            string securityAnswer1 = SecurityEntry1.Text;
+            string securityAnswer1 = Security.Hash(SecurityEntry1.Text);
             string securityQuestion2 = (string)SecurityPicker2.SelectedItem;
-            string securityAnswer2 = SecurityEntry2.Text;
+            string securityAnswer2 = Security.Hash(SecurityEntry2.Text);
 
             // Create a Profile info
             ProfileInfo userProfile = new ProfileInfo(username, password, 
