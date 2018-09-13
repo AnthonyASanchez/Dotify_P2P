@@ -57,10 +57,12 @@ namespace Dotify
             string securityAnswer2 = SecondEntry.Text;
 
             //Hash the security answers
+            String hashPassword1 = Security.HashPassword(securityAnswer1);
+            String hashPassword2 = Security.HashPassword(securityAnswer2);
 
             //Get the security answers from the user profile
             //Compare it to the hash and if it matches, and allow the user to verify
-            if (user.securityAnswer1.Equals(securityAnswer1) && user.securityAnswer2.Equals(securityAnswer2))
+            if (user.securityAnswer1.Equals(hashPassword1) && user.securityAnswer2.Equals(hashPassword2))
             {
                 ResetError.IsVisible = false;
                 //Go to the reset page so the user can reset their password.
