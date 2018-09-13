@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<CarouselPage
+<TabbedPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Dotify.MainPage">
-    <TabbedPage
-        xmlns:local="clr-namespace:Dotify">
-        <local:Playlist />
-        <local:Search />
-        <local:Profile />
-    </TabbedPage>
-</CarouselPage>
+    x:Class="Dotify.MainPage"
+    xmlns:local="clr-namespace:Dotify">
+    <local:Playlist />
+    <local:Search />
+    <local:Profile />
+</TabbedPage>
