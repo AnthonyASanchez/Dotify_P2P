@@ -11,7 +11,7 @@ namespace Dotify
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new CreateAccount();
 
             // Initialize the Control Template for the CreateAccount page
             

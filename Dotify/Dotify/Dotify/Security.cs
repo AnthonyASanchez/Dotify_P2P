@@ -10,11 +10,11 @@ namespace Dotify
             
         }
 
-
-        public String HashPassword(String password){
-            var hashPassword = "";
-
-            return hashPassword;
+        public static String Hash(String password){
+            using (var sha = SHA512.Create())
+            {
+                return Convert.ToBase64String(sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password)));
+            }
         }
     }
 }

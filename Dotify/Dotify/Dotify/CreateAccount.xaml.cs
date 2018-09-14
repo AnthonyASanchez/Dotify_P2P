@@ -40,6 +40,18 @@ namespace Dotify
             // Populate the Pickers
             SecurityPicker1.ItemsSource = securityQuestions;
             SecurityPicker2.ItemsSource = securityQuestions;
+
+            // Check if the user has an account in the system and display a 
+            // warning that their previous account is going to be deleted
+            ProfileInfo user = JsonUtil.GetJsonUser();
+            if (user != null)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Warning!", "An account already exists, creating an account" +
+                    "will delete the existing account.", "OK");
+                });
+            }
         }
 
         // ------------------------------ Entry Methods ------------------------------
@@ -203,11 +215,11 @@ namespace Dotify
         {
             // Retrieve all of the entries
             string username = CreateAccountUsernameEntry.Text;
-            string password = CreateAccountPasswordEntry.Text;
+            string password = Security.Hash(CreateAccountPasswordEntry.Text);
             string securityQuestion1 = (string)SecurityPicker1.SelectedItem;
-            string securityAnswer1 = SecurityEntry1.Text;
+            string securityAnswer1 = Security.Hash(SecurityEntry1.Text);
             string securityQuestion2 = (string)SecurityPicker2.SelectedItem;
-            string securityAnswer2 = SecurityEntry2.Text;
+            string securityAnswer2 = Security.Hash(SecurityEntry2.Text);
 
             // Create a Profile info
             ProfileInfo userProfile = new ProfileInfo(username, password, 

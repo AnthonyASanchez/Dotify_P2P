@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dotify.CreateAccount"
+             xmlns:local="clr-namespace:Dotify; assembly=Dotify"
              BackgroundColor="#242424">
 
     <StackLayout>
@@ -62,6 +63,8 @@
             <Entry
                 x:Name="CreateAccountUsernameEntry"
                 Placeholder="Username"
+                PlaceholderColor="LightGray"
+                TextColor="LightGray"
                 TextChanged="CreateAccountUsernameTextChanged"/>
             <Label
                 x:Name="CreateAccountUsernameError"
@@ -72,17 +75,21 @@
             <Entry 
                 x:Name="CreateAccountPasswordEntry"
                 Placeholder="Password"
+                PlaceholderColor="LightGray"
+                TextColor="LightGray"
                 IsPassword="True"
                 TextChanged="CreateAccountPasswordTextChanged"/>
             <Label
                 x:Name="CreateAccountPasswordError"
                 TextColor="IndianRed"
-                Text="Password does not meet requirements."
+                Text="Password must contain atleast one of (a-z, A-Z, 0-9, Special Character)"
                 IsVisible="False"
                 FontSize="13"/>
             <Entry
                 x:Name="CreateAccountVerifyPasswordEntry"
                 Placeholder="Verify Password"
+                PlaceholderColor="LightGray"
+                TextColor="LightGray"
                 IsPassword="True"
                 TextChanged="CreateAccountVerifyPasswordTextChanged"/>
             <Label
@@ -92,7 +99,7 @@
                 IsVisible="False"
                 FontSize="13"
                 />
-            <Picker
+            <local:CustomPickerView
                 x:Name="SecurityPicker1"
                 x:Uid="SecurityPicker1"
                 Title="Security 1"
@@ -101,20 +108,23 @@
             <Entry
                 x:Name="SecurityEntry1"
                 Placeholder="Security Answer 1"
-                IsEnabled="False"
+                PlaceholderColor="LightGray"
+                TextColor="LightGray"
                 TextChanged="SecurityEntryTextChanged"
                 />
-            <Picker
+            <local:CustomPickerView
                 x:Name="SecurityPicker2"
                 x:Uid="SecurityPicker2"
                 Title="Security 2"
+                TextColor="LightGray"
                 SelectedIndexChanged="OnPickerSelectedItem"
                 IsEnabled="False"
                 />
             <Entry
                 x:Name="SecurityEntry2"
                 Placeholder="Security Answer 2"
-                IsEnabled="False"
+                PlaceholderColor="LightGray"
+                TextColor="LightGray"
                 TextChanged="SecurityEntryTextChanged"
                 />
         </StackLayout>
