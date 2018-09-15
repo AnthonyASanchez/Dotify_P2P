@@ -1,18 +1,10 @@
 ﻿using Rg.Plugins.Popup.Pages;
-using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static Java.Text.Normalizer;
 
 namespace Dotify
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Popup : PopupPage
 	{
 		public Popup ()
@@ -55,7 +47,7 @@ namespace Dotify
         private async void Button_Clicked_2(object sender, EventArgs e)
         {
             var main = new MainPage();
-            await Navigation.PushModalAsync(main);
+            //await Navigation.PushModalAsync(main);
         }
     }
 }
