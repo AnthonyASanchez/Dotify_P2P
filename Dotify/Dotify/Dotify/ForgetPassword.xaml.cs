@@ -34,17 +34,28 @@ namespace Dotify
         {
             //Parse the JSON Files and retrieve the four questions
             //From the four, select a random 2
-            if (firstPass == 1)
+            if (user != null)
             {
-                //Randomize the questions
-                FirstQuestion.Text = user.securityQuestion1;
-                SecondQuestion.Text = user.securityQuestion2;
+                if (firstPass == 1)
+                {
+                    //Randomize the questions
+                    FirstQuestion.Text = user.securityQuestion1;
+                    SecondQuestion.Text = user.securityQuestion2;
+                }
+                else
+                {
+                    FirstQuestion.Text = user.securityQuestion1;
+                    SecondQuestion.Text = user.securityQuestion2;
+                    firstPass = 1;
+                }
             }
-            else
+        }
+
+        private void getUser()
+        {
+            if (user == null)
             {
-                FirstQuestion.Text = user.securityQuestion1;
-                SecondQuestion.Text = user.securityQuestion2;
-                firstPass = 1;
+
             }
         }
 
