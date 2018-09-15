@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dotify.Popup"
+            xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"        
+            Padding="20" HeightRequest="150" WidthRequest="150"
+            BackgroundColor="Orange">
+    <StackLayout Orientation="Vertical">
+        <Entry x:Name="PlaylistName" Placeholder="Playlist1" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+            <Button x:Name="button1" Text="Create" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Button_Clicked" />
+            <Button x:Name="button2" Text="Delete" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Button_Clicked_1" />
+        </StackLayout>
+        <Button x:Name="button3" Text="Close" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Button_Clicked_2" />
+    </StackLayout>
+    
+</pages:PopupPage>

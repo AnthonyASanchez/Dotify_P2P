@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel;
-using System.Windows.Input;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace Dotify
 {
@@ -11,62 +9,133 @@ namespace Dotify
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        const string emptyEntryError = "Username or Password cannot be empty";
-        const string wrongPasswordError = "Invalid Username or Password";
-        const String userNameString = "Username";
-        const String passwordString = "Password";
-        private String _password;
-        private String _username;
+        private const string emptyEntryError = "Username or Password cannot be empty";
+        private const string wrongPasswordError = "Invalid Username or Password";
+        private const String userNameString = "Username";
+        private const String passwordString = "Password";
+        private String password = string.Empty;
+        private String username = string.Empty;
+        private String currErrorMessage = string.Empty;
+
+        public INavigation MyNavigation { get; set; }
 
         //Constructor
-        public LoginPageModel()
+        public LoginPageModel(INavigation navigation)
         {
-            LaunchMainPage = new Command(testWrite);
+            MyNavigation = navigation;
+            SignInCommand = new Command(async () => await SignIn());
+            SignUpCommand = new Command(async () => await CreateAccount());
+            ForgetPasswordCommand = new Command(async () => await ForgetPassword());
         }
 
-        public Command LaunchMainPage { get; }
+        public Command SignInCommand { get; }
 
-        public Command LaunchCreateAccount { get; }
+        public Command SignUpCommand { get; }
 
-        public Command LaunchForgotPassword { get; }
+        public Command ForgetPasswordCommand { get; }
 
-
-        public void testWrite()
+        void OnPropertyChanged(string name)
         {
-            
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        //Error message to be display
+        private void SetErrorMessage(int messageNum)
+        {
+            switch (messageNum)
+            {
+                //Empty username or password error
+                case 0:
+                    currErrorMessage = emptyEntryError;
+                    break;
+                //Invalid password or username error
+                case 1:
+                    currErrorMessage = wrongPasswordError;
+                    break;
+            }
+        }
+
+        //The user press the sign in button
+        private async Task SignIn()
+        {
+            ProfileInfo user = JsonUtil.GetJsonUser();
+            //If the user didn't enter anything in username or password
+            if (String.IsNullOrWhiteSpace(username) || String.IsNullOrWhiteSpace(password))
+            {
+                //Empty username or password entry
+                SetErrorMessage(0);
+                OnPropertyChanged(nameof(ErrorLabelMessage));
+            }
+            else if (!user.username.Equals(username) || !user.password.Equals(Security.Hash(password)))
+            {
+                //Invalid username or password
+                SetErrorMessage(1);
+                OnPropertyChanged(nameof(ErrorLabelMessage));
+            }
+            else
+            {
+                await MyNavigation.PushModalAsync(new MainPage());
+            }
+
+
+        }
+
+        //The user press the sign up button
+        public async Task CreateAccount()
+        {
+            await MyNavigation.PushModalAsync(new CreateAccount());
+        }
+
+        //The user press the forgot password button
+        private async Task ForgetPassword()
+        {
+            await MyNavigation.PushModalAsync(new MainPage());
+        }
+
+        public String TestLabel
+        {
+            get { return $"The username is {Username}"; }
+        }
+
+        //Set place holder for username entry
         public string UsernamePlaceHolder
         {
             get { return userNameString; }
         }
 
+        //Set place holder for password entry
         public string PasswordPlaceHolder
         {
             get { return passwordString; }
         }
 
+        //Bind to username entry text
         public String Username
         {
-            get { return _username; }
+            get { return username; }
 
             set
             {
-                _username = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Username)));
+                username = value;
             }
         }
 
+        //Bind to password entry text
         public String Password
         {
-            get { return _password; }
+            get { return password; }
 
             set
             {
-                _password = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Password)));
+                password = value;
             }
-  
+
+        }
+
+        //Set error message to the label
+        public String ErrorLabelMessage
+        {
+            get { return currErrorMessage; }
         }
 
     }

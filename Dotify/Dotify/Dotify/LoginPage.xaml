@@ -5,58 +5,62 @@
              BackgroundColor="#242424"
              Title="Log In Page">
 
-    <ContentPage.Content>
+    <StackLayout>
+
+        <Label 
+            Text="Dotify"
+            HorizontalOptions="Center"
+            FontSize="50"
+            Margin="0, 40, 0, 15"
+            TextColor="White"/>
+
+        <Label
+            Text="{Binding ErrorLabelMessage}"
+            TextColor="Red"
+            HorizontalOptions="Center"/>
+
+        <Entry 
+            Placeholder="{Binding UsernamePlaceHolder}"
+            Text ="{Binding Username}"
+            TextColor="White"
+            PlaceholderColor="White"
+            Margin="25, 15, 25, 0"/>
+
+        <Entry 
+            Placeholder="{Binding PasswordPlaceHolder}"
+            Text ="{Binding Password}"
+            TextColor="White"
+            PlaceholderColor="White"
+            Margin="25, 0, 25, 0"
+            IsPassword="True"/>
+
+        <Button 
+            Text="Forgot password?"
+            Command="{Binding ForgetPasswordCommand}"
+            BackgroundColor="Transparent"
+            TextColor="White"
+            HeightRequest="35"
+            HorizontalOptions="End"
+            Margin="0, 0, 18, 20"/>
+
+        <Button 
+            Text="Sign in"
+            Command="{Binding SignInCommand}"
+            FontAttributes="Bold"
+            Margin="25, 0, 25, 10"
+            FontSize="20"
+            BackgroundColor="Gray"
+            TextColor="White"/>
+
+        <Button 
+            Text="Sign Up"
+            Command="{Binding SignUpCommand}"
+            FontAttributes="Bold"
+            Margin="25, 0, 25, 0"
+            FontSize="20"
+            BackgroundColor="Gray"
+            TextColor="White"/>
         
-        <StackLayout>
-            
-            <Label Text="Dotify"
-                   HorizontalOptions="Center"
-                   FontSize="50"
-                   Margin="0, 25, 0, 15"
-                   TextColor="White"/>
-
-            <Label x:Name="errorLabel"
-                   Text="Hello"
-                   TextColor="Transparent"
-                   HorizontalOptions="Center"
-                   IsVisible="true"/>
-           
-            <Entry Placeholder="{Binding UsernamePlaceHolder}"
-                   TextColor="White"
-                   PlaceholderColor="White"
-                   Margin="25, 15, 25, 0"/>
-
-            <Entry Placeholder="{Binding PasswordPlaceHolder}"
-                   TextColor="White"
-                   PlaceholderColor="White"
-                   Margin="25, 0, 25, 0"
-                   IsPassword="True"/>
-            
-            <Button Text="Forgot password?"
-                    BackgroundColor="Transparent"
-                    TextColor="White"
-                    HeightRequest="35"
-                    HorizontalOptions="End"
-                    Margin="0, 0, 18, 20"/>
-
-            <Button Text="Sign in"
-                    Command="{Binding LaunchMainPage}"
-                    FontAttributes="Bold"
-                    Margin="25, 0, 25, 10"
-                    FontSize="20"
-                    BackgroundColor="Gray"
-                    TextColor="White"/>
-
-            <Button Text="Sign Up"
-                    Command="{Binding LaunchCreateAccount}"
-                    FontAttributes="Bold"
-                    Margin="25, 0, 25, 0"
-                    FontSize="20"
-                    BackgroundColor="Gray"
-                    TextColor="White"/>
-
-        </StackLayout>
-        
-    </ContentPage.Content>
+    </StackLayout>
 
 </ContentPage>
