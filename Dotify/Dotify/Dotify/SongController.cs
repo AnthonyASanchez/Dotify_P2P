@@ -42,7 +42,7 @@ namespace Dotify
         public static void LoadDefaultSong() {
             songList = JsonUtil.GetJsonSong();
             Song[] s = songList.ToArray();
-            Stream songStream = new MemoryStream(s[1].Music);
+            Stream songStream = new MemoryStream(s[0].Music);
            player.Load(songStream);
         }
 
