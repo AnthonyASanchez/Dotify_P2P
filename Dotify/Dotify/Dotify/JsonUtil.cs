@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace Dotify
 {
@@ -70,7 +71,7 @@ namespace Dotify
         {
             // Create the path to the file location
             string saveLocation = Path.Combine(SYSTEM_SAVE_PATH, fileName);
-            
+            Debug.WriteLine(SYSTEM_SAVE_PATH + fileName);
             // If the file already exists, delete the file so we can overwrite it
             if (File.Exists(saveLocation))
             {
@@ -108,10 +109,12 @@ namespace Dotify
         /// Retrieves a stored Song object
         /// </summary>
         /// <returns>Null if there is no stored information and Song if there is</returns>
-        public static List<Song> GetJsonSong()
+        public static Song GetJsonSong(string songName)
         {
+            Debug.WriteLine("Getting Song File");
+            Debug.WriteLine(SYSTEM_SAVE_PATH + songName + ".json");
             // The path to the stringified ProfileInfo object
-            string songJsonLocation = Path.Combine(SYSTEM_SAVE_PATH, SONG_JSON_FILE);
+            string songJsonLocation = Path.Combine(SYSTEM_SAVE_PATH, songName + ".json");
 
             string stringifiedSong = ReadContents(songJsonLocation);
             if (stringifiedSong == null)
@@ -119,7 +122,7 @@ namespace Dotify
                 return null;
             }
             // Type cast the user object and return
-            return ToObject<List<Song>>(stringifiedSong);
+            return ToObject<Song>(stringifiedSong);
 
         }
 

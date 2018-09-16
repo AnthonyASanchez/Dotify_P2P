@@ -19,7 +19,7 @@ namespace Dotify
     static class SongController
     {
         //Audio player.
-        public static ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+        public static ISimpleAudioPlayer player;
 
         //Queue for next songs to be played.
         static Queue<Song> songQueue;
@@ -27,23 +27,27 @@ namespace Dotify
         //List of songs loaded in the controller.
         private static List<Song> songList;
 
-        //Boolean determining if SongController has installed songs yet.
-        static bool songsInstalled = false;
+        //Bool determining if the SongController has already install songs.
+        static bool installedSongs = false;
 
         /// <summary>
         /// Constructor which call InstallSongs.
         /// </summary>
         static SongController(){
-                InstallSongs();
-                songsInstalled = true;
-            }
+            player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+        }
 
         //Loads default song.
-        public static void LoadDefaultSong() {
-            songList = JsonUtil.GetJsonSong();
-            Song[] s = songList.ToArray();
-            Stream songStream = new MemoryStream(s[0].Music);
-           player.Load(songStream);
+        public static async void LoadDefaultSong() {
+            if (!installedSongs)
+            {
+                await InstallSongsAsync();
+                installedSongs = true;
+            }
+
+            Song s = JsonUtil.GetJsonSong("Help!");
+            Stream songStream = new MemoryStream(s.Music);
+            player.Load(songStream);
         }
 
         /// <summary>
@@ -84,17 +88,25 @@ namespace Dotify
         }
 
         /// <summary>
+        /// Used to Asynchronously call Install Songs.
+        /// </summary>
+        /// <returns></returns>
+        public static Task InstallSongsAsync()
+        {
+            return Task.Run(() => InstallSongs());
+        }
+
+        /// <summary>
         /// Installs songs, that are preinstalled on app, onto JSON file for streaming pruposes.
         /// </summary>
         public static void InstallSongs()
         {
-           
-            String[] songFiles = { "samplehelp", "lucky_you" };
-            String[] photoFiles = { "beatles", "em" };
-            String[] titles = {  "Help!", "Lucky You" };
-            String[] artists = {"The Beatles", "Eminem"};
-            String[] albums = {"beatles", "Kamikaze"};
-            List<Song> musicList = new List<Song>();
+            String[] songPath = { "Help!", "Come_Together", "Pumped_Up_Kicks", "Feel_Good_Inc", "September", "Hooked_on_a_Feeling", "Lucky_You" };
+            String[] songFiles = { "samplehelp", "sample", "pumped_up_kicks", "feel_good_nc", "september", "blue_swede_hooked_on_a_feeling","lucky_you" };
+            String[] photoFiles = { "beatles", "beatles", "ftp", "gor", "ewf", "kof", "em" };
+            String[] titles = {  "Help!","Come Together", "Pumped Up Kicks", "Feel Good Inc", "September", "Hooked on a Feeling", "Lucky You" };
+            String[] artists = {"The Beatles", "The Beatles","Foster the People", "Gorillaz", "Earth, Wind & Fire", "Blue Swede",  "Eminem" };
+            String[] albums = {"Beatles", "Beatles", "Pumped Up Kicks", "Demon Days", "September", "Guardians of the Galaxy", "Kamikaze"};
             for (int i = 0; i < songFiles.Length; i++)
             {
                 Debug.WriteLine(titles[i]);
@@ -117,13 +129,13 @@ namespace Dotify
                 String artist = artists[i];
                 String album = albums[i];
                 Song song = new Song(title, artist, album, photoBytes, musicBytes);
-                musicList.Add(song);
+
+                //Turns the List of Songs into a JSON file.
+                string jsonString = JsonUtil.Stringify(song);
+                Debug.WriteLine("Saving to " + songPath[i] + ".json");
+                JsonUtil.SaveJsonToFile(jsonString, songPath[i] + ".json");
 
             }
-
-            //Turns the List of Songs into a JSON file.
-            string jsonString = JsonUtil.Stringify(musicList);
-            JsonUtil.SaveJsonToFile(jsonString, JsonUtil.SONG_JSON_FILE);
         }
     }
 }
