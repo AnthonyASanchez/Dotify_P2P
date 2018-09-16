@@ -16,7 +16,7 @@ namespace Dotify
         public LoginPage()
         {
             InitializeComponent();
-            BindingContext = new LoginPageModel();
+            BindingContext = new LoginPageModel(Navigation);
         }
 
     }

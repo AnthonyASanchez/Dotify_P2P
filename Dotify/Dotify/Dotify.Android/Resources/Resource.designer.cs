@@ -26,6 +26,8 @@ namespace Dotify.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::PCLStorage.Resource.String.ApplicationName = global::Dotify.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::Dotify.Droid.Resource.String.Hello;
 			global::SuaveControls.MaterialForms.Android.Resource.Animation.abc_fade_in = global::Dotify.Droid.Resource.Animation.abc_fade_in;
 			global::SuaveControls.MaterialForms.Android.Resource.Animation.abc_fade_out = global::Dotify.Droid.Resource.Animation.abc_fade_out;
 			global::SuaveControls.MaterialForms.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::Dotify.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;

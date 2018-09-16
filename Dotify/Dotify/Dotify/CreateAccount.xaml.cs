@@ -235,7 +235,6 @@ namespace Dotify
             string systemCacheString = JsonUtil.Stringify(systemCache);
             JsonUtil.SaveJsonToFile(systemCacheString, JsonUtil.SYSTEM_CACHE_FILE);
 
-
             // Remove the Account Creation and Login page from the stack
             Navigation.PopModalAsync(false);
 

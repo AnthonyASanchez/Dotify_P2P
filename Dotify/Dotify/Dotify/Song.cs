@@ -62,5 +62,12 @@ namespace Dotify
             get { return music; }
             set { music = value; }
         }
+
+        public override String ToString()
+        {
+            return "Title: " + title + "\n"
+                + "Artist: " + artist + "\n"
+                + "Album: " + album + "\n";
+        }
     }
 }
