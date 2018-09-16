@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dotify.Search"
-             Title="Search">
+             Title="Search"
+             BackgroundColor="#242424">
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="MainSearchBar" SearchButtonPressed="MainSearchBar_SearchButtonPressed"></SearchBar>
