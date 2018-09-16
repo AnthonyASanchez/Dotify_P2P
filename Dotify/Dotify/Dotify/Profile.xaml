@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Dotify.Profile" 
              BackgroundColor="#242424" 
+             xmlns:local="clr-namespace:Dotify; assembly=Dotify"
              Title="Profile Info">
     <ContentPage.Content>
         <ScrollView>
@@ -44,6 +45,7 @@
                         Property=Y, 
                         Constant=75}" />
                 <Label Text="User Name" 
+                       TextColor="LightGray"
                        x:Name="ProfileUsernameLabel"
                        FontAttributes="Bold" 
                        FontSize="26" 
@@ -81,7 +83,7 @@
                            Property=Height, 
                            Factor=0,
                            Constant=50}" />
-                    <Entry Text="-/-/-" 
+                    <local:CustomEntryView Text="-/-/-" 
                            x:Name="ProfileDateJoinedEntry"
                            TextColor="White" 
                            BackgroundColor="#242424" 
@@ -89,7 +91,7 @@
                            Type=RelativeToParent, 
                            Property=Height, 
                            Factor=0, 
-                           Constant=280}" 
+                           Constant=290}" 
                            RelativeLayout.XConstraint="{ConstraintExpression 
                            Type=RelativeToParent, 
                            Property=Width, Factor=0.3,
@@ -97,14 +99,13 @@
                            RelativeLayout.WidthConstraint="{ConstraintExpression 
                            Type=RelativeToParent, 
                            Property=Width, 
-                           Factor=0.75,
+                           Factor=0.4,
                            Constant=0}" 
                            RelativeLayout.HeightConstraint="{ConstraintExpression 
                            Type=RelativeToParent, 
                            Property=Height, 
                            Factor=0,
-                           Constant=50}"
-                           IsEnabled="False"/>
+                           Constant=50}"/>
                 </RelativeLayout>
                 <RelativeLayout Padding="5,0,0,0">
                     <Label FontSize="14" 
@@ -130,14 +131,14 @@
                            Property=Height, 
                            Factor=0, 
                            Constant=50}" />
-                    <Entry Text="Xamarin.Forms" 
+                    <local:CustomEntryView Text="???" 
                            TextColor="White" 
                            BackgroundColor="#242424" 
                            RelativeLayout.YConstraint="{ConstraintExpression 
                            Type=RelativeToParent, 
                            Property=Height, 
                            Factor=0, 
-                           Constant=320}" 
+                           Constant=330}" 
                            RelativeLayout.XConstraint="{ConstraintExpression 
                            Type=RelativeToParent, 
                            Property=Width, 
@@ -146,7 +147,7 @@
                            RelativeLayout.WidthConstraint="{ConstraintExpression 
                            Type=RelativeToParent, 
                            Property=Width, 
-                           Factor=0.75, 
+                           Factor=0.4, 
                            Constant=0}" 
                            RelativeLayout.HeightConstraint="{ConstraintExpression 
                            Type=RelativeToParent, 
@@ -179,14 +180,14 @@
                            Property=Height, 
                            Factor=0, 
                            Constant=50}" />
-                    <Entry Text="0" 
+                    <local:CustomEntryView Text="0" 
                            TextColor="White" 
                            BackgroundColor="#242424" 
                            RelativeLayout.YConstraint="{ConstraintExpression 
                            Type=RelativeToParent, 
                            Property=Height, 
                            Factor=0, 
-                           Constant=370}" 
+                           Constant=380}" 
                            RelativeLayout.XConstraint="{ConstraintExpression
                            Type=RelativeToParent,
                            Property=Width,
@@ -201,8 +202,7 @@
                            Type=RelativeToParent, 
                            Property=Height, 
                            Factor=0, 
-                           Constant=50}" 
-                           IsEnabled="False"/>
+                           Constant=50}" />
                 </RelativeLayout>
             </RelativeLayout>
         </ScrollView>

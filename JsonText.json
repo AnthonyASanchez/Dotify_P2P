@@ -1,0 +1,32 @@
+{
+  "username" : "Penguin",
+  "password" : "098CEA21CA2B6A192BF7B9E1578
+  A6704F8B3252F5633BF8550A1F90DD1E5EEA0",
+  "date_joined": "09/11/2018",
+  "security_question_1" : "Favorite Sand",
+  "security_question_2" : "Favorite Tree",
+  "security_answer_1": "F5AFA2B3773EB81B5EB8B0
+  E5111D9945868FFB2DD5FFD4A51F144E43B730B6F4",
+  "security_answer_2": "5EB67F9F8409B9C3F739735633C
+  BDF92121393D0E13BD0F464B1B2A6A15AD2DC",
+  "extra" : {
+    "is_logged_in": "true",
+    "profile_image": "iVBORw0KGgoAAAANSUhEUgAAAdc
+    AAANDCAYAAAD/7FW9AAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+    jwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gA
+    AGliSURBVHhe7d2HmxTF/r/954/5iVkxYc4Jcw7H
+    nDErZjGgGDBjFhWQoKKCCqgoqKgYCBIVTGACMwbMx1
+    jP3PW19vT29rK7WLuzC3df1+sCZqojsO/5=="
+  }
+}
+
+{
+  "music_list":{
+    "song_1" : ["...", "10"],
+    "song_2" : ["...", "1"]
+  },
+  "favorite_song_list": ["song_1", "song_2", "song_3"],
+  "playlist": {
+    "playlist_1" : ["song_1", "song_2", "song_3"]
+  }
+}

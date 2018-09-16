@@ -43,7 +43,7 @@ namespace Dotify
 
             // Check if the user has an account in the system and display a 
             // warning that their previous account is going to be deleted
-            ProfileInfo user = JsonUtil.GetJsonUser();
+            ProfileInfo user = ProfileInfo.Instance;
             if (user != null)
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -221,9 +221,8 @@ namespace Dotify
             string securityQuestion2 = (string)SecurityPicker2.SelectedItem;
             string securityAnswer2 = Security.Hash(SecurityEntry2.Text);
 
-            // Create a Profile info
-            ProfileInfo userProfile = new ProfileInfo(username, password, 
-                securityQuestion1, securityQuestion2, securityAnswer1, securityAnswer2);
+            ProfileInfo userProfile = ProfileInfo.CreateNewUser(username, password, securityQuestion1, securityQuestion2,
+                securityAnswer1, securityAnswer2);
 
             // The json object in string mode
             string jsonString = JsonUtil.Stringify(userProfile);
@@ -235,7 +234,7 @@ namespace Dotify
             SystemCache systemCache = new SystemCache();
             systemCache.isLoggedIn = true;
             string systemCacheString = JsonUtil.Stringify(systemCache);
-            JsonUtil.SaveJsonToFile(jsonString, JsonUtil.SYSTEM_CACHE_FILE);
+            JsonUtil.SaveJsonToFile(systemCacheString, JsonUtil.SYSTEM_CACHE_FILE);
 
             // Remove the Account Creation and Login page from the stack
             Navigation.PopModalAsync(false);
