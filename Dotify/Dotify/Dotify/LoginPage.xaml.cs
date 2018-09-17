@@ -17,6 +17,14 @@ namespace Dotify
         {
             InitializeComponent();
             BindingContext = new LoginPageModel(Navigation);
+
+            // Check if the user is already logged in
+            SystemCache systemCache = JsonUtil.GetJsonSystemCache();
+
+            if (systemCache != null || !systemCache.isLoggedIn)
+            {
+                Navigation.PushModalAsync(new MainPage());
+            }
         }
 
     }
