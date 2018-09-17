@@ -34,8 +34,8 @@ namespace Dotify
            SongController.LoadDefaultSong();
             changeIconCommand = new Command(() =>
             {
-                SetNewPath();
-                ChangeMusicStatus();
+                    SetNewPath();
+                    ChangeMusicStatus();
             });
         }
 
