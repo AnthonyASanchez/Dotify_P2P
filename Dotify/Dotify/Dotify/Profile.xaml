@@ -8,15 +8,27 @@
     <ContentPage.Content>
         <ScrollView>
             <RelativeLayout>
-                <RelativeLayout.BindingContext>
-                    <local:ProfileViewModel />
-                </RelativeLayout.BindingContext>
                 <BoxView Color="Gray" 
                          HeightRequest="100" 
                          RelativeLayout.WidthConstraint="{ConstraintExpression 
                          Type=RelativeToParent, 
                          Property=Width, 
                          Factor=1}" />
+                <Button BorderRadius="35" 
+                         x:Name="imageCircleBack" 
+                         BackgroundColor="#242424" 
+                         HeightRequest="70" 
+                         WidthRequest="70" 
+                         RelativeLayout.XConstraint="{ConstraintExpression 
+                         Type=RelativeToParent, 
+                         Property=Width, 
+                         Factor=.5, 
+                         Constant = -35 }" 
+                         RelativeLayout.YConstraint="{ConstraintExpression 
+                         Type=RelativeToParent, 
+                         Factor=0, 
+                         Property=Y, 
+                         Constant=70}" />
                 <Button BorderRadius="30" 
                         BackgroundColor="#242424" 
                         HeightRequest="60" 

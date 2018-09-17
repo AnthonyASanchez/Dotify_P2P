@@ -16,7 +16,6 @@ namespace Dotify
         public LoginPage()
         {
             InitializeComponent();
-            BindingContext = new LoginPageModel(Navigation);
 
             // Check if the user is already logged in
             SystemCache systemCache = JsonUtil.GetJsonSystemCache();
@@ -24,6 +23,10 @@ namespace Dotify
             if (systemCache != null && systemCache.isLoggedIn == SystemCache.LOGGED_IN)
             {
                 Navigation.PushModalAsync(new MainPage());
+            }
+            else
+            {
+                BindingContext = new LoginPageModel(Navigation);
             }
         }
 
