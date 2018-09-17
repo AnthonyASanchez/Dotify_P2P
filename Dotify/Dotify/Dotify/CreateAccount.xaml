@@ -40,19 +40,21 @@
             <Button
                 x:Name="CreateAccountButton"
                 BackgroundColor="Transparent"
-                Text="Create Account"
+                Text="Create"
                 TextColor="Gray"
                 HeightRequest="40"
                 RelativeLayout.YConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Y,
-                Factor=1,
-                Constant=1}"
+                    Type=RelativeToParent,
+                    Property=Y,
+                    Factor=1,
+                    Constant=1
+                }"
                 RelativeLayout.XConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=X,
-                Factor=1,
-                Constant=255}"
+                    Type=RelativeToParent,
+                    Property=X,
+                    Factor=1,
+                    Constant=290
+                }"
                 Clicked="CreateAccountButtonClicked"
                 IsEnabled="False"/>
             

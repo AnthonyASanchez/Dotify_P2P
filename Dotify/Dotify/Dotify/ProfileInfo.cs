@@ -63,6 +63,7 @@ namespace Dotify
             return new ProfileInfo(user, pass, question1, question2, answer1, answer2);
         }
 
+        
         private ProfileInfo(string user, string pass, string question1, string question2,
             string answer1, string answer2)
         {
@@ -74,6 +75,11 @@ namespace Dotify
             securityAnswer2 = answer2;
             searchHist = new List<string>();
             dateJoined = DateTime.Today;
+        }
+
+        public ProfileInfo()
+        {
+
         }
     }
 }
