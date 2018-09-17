@@ -221,7 +221,8 @@ namespace Dotify
             string securityQuestion2 = (string)SecurityPicker2.SelectedItem;
             string securityAnswer2 = Security.Hash(SecurityEntry2.Text);
 
-            ProfileInfo user = ProfileInfo
+            ProfileInfo userProfile = ProfileInfo.CreateNewUser(username, password, securityQuestion1, securityQuestion2,
+                securityAnswer1, securityAnswer2);
 
             // The json object in string mode
             string jsonString = JsonUtil.Stringify(userProfile);
