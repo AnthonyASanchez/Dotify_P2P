@@ -76,8 +76,6 @@ namespace Dotify
             {
                 await MyNavigation.PushModalAsync(new MainPage());
             }
-
-
         }
 
         //The user press the sign up button
@@ -89,7 +87,7 @@ namespace Dotify
         //The user press the forgot password button
         private async Task ForgetPassword()
         {
-            await MyNavigation.PushModalAsync(new MainPage());
+            await MyNavigation.PushModalAsync(new ForgetPassword());
         }
 
         public String TestLabel
