@@ -14,23 +14,23 @@ namespace Dotify
     {
         // Data values that are stored into Json
         [DataMember(Name = "username")]
-        public static string username { get; set; }
+        public string username { get; set; }
         [DataMember(Name = "password")]
-        public static string password { get; set; }
+        public string password { get; set; }
         [DataMember(Name = "Security_Question_1")]
-        public static string securityQuestion1 { get; set; }
+        public string securityQuestion1 { get; set; }
         [DataMember(Name = "Security_Question_2")]
-        public static string securityQuestion2 { get; set; }
+        public string securityQuestion2 { get; set; }
         [DataMember(Name = "Security_Answer_1")]
-        public static string securityAnswer1 { get; set; }
+        public string securityAnswer1 { get; set; }
         [DataMember(Name = "Security_Answer_2")]
-        public static string securityAnswer2 { get; set; }
+        public string securityAnswer2 { get; set; }
         [DataMember(Name = "Join_Date")]
-        public static DateTime dateJoined { get; set; }
+        public DateTime dateJoined { get; set; }
         [DataMember(Name = "Profile_Picture")]
-        public static Image profile_image { get; set; }
+        public Image profile_image { get; set; }
         [DataMember(Name = "Search_History")]
-        public static List<string> searchHist;
+        public List<string> searchHist;
 
         // Keeps track to see if this class has been instantiated
         private static ProfileInfo instance = null;
