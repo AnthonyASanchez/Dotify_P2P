@@ -23,8 +23,6 @@ namespace Dotify
             ProfileUsernameLabel.Text = user.username;
             // Initialize the date that the user has joined in ProfileDateJoinedEntry
             ProfileDateJoinedEntry.Text = user.dateJoined.ToShortDateString();
-
-            
-		}
-	}
+        }
+    }
 }

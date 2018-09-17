@@ -72,14 +72,19 @@ namespace Dotify
             }
         }
 
+        //If the verify button is clicked, do this
         private void VerifyButtonClicked(object sender, EventArgs e)
         {
             //If passwords match and they meet password requirements
-            if (newPasswordEntry == verifyNewPasswordEntry)
+            if (newPasswordEntry.Text.Equals(verifyNewPasswordEntry.Text))
             {
-                //Save the password
-                String password = verifyNewPasswordEntry.Text;
-                JsonUtil.ToObject<ProfileInfo>(password);
+                //Save the password to JSON file
+                //Get the password that the user entered
+                String passwordEntered = Security.Hash(verifyNewPasswordEntry.Text);
+                user.password = passwordEntered;
+                String stringifiedPass = JsonUtil.Stringify(user);
+                JsonUtil.SaveJsonToFile(stringifiedPass, JsonUtil.USER_JSON_FILE);
+                
                 //Send the user to the main page
                 Navigation.PopModalAsync(false);
                 Navigation.PushModalAsync(new MainPage());
@@ -90,7 +95,5 @@ namespace Dotify
                 NotMatchingError.IsVisible = true;
             }
         }
-
-
     }
 }
