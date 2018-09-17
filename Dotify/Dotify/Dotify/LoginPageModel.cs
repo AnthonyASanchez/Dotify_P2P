@@ -74,6 +74,11 @@ namespace Dotify
             }
             else
             {
+                SystemCache systemCache = JsonUtil.GetJsonSystemCache();
+                systemCache.isLoggedIn = SystemCache.LOGGED_IN;
+                string json = JsonUtil.Stringify(systemCache);
+                JsonUtil.SaveJsonToFile(json, JsonUtil.SYSTEM_CACHE_FILE);
+
                 await MyNavigation.PushModalAsync(new MainPage());
             }
         }

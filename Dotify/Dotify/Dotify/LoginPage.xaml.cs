@@ -21,7 +21,7 @@ namespace Dotify
             // Check if the user is already logged in
             SystemCache systemCache = JsonUtil.GetJsonSystemCache();
 
-            if (systemCache != null || !systemCache.isLoggedIn)
+            if (systemCache != null && systemCache.isLoggedIn == SystemCache.LOGGED_IN)
             {
                 Navigation.PushModalAsync(new MainPage());
             }

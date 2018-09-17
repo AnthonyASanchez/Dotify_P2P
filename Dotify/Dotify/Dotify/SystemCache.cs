@@ -11,7 +11,16 @@ namespace Dotify
     [DataContract]
     class SystemCache
     {
+        public static int LOGGED_IN
+        {
+            get { return 300; }
+        }
+        public static int LOGGED_OUT
+        {
+            get { return 500; }
+        }
+
         [DataMember (Name = "loginStatus")]
-        public bool isLoggedIn { get; set; }
+        public int isLoggedIn { get; set; }
     }
 }

@@ -133,7 +133,7 @@ namespace Dotify
         public static SystemCache GetJsonSystemCache()
         {
             // The path to the stringified SystemCache object
-            string systemCacheLocation = Path.Combine(SYSTEM_SAVE_PATH, USER_JSON_FILE);
+            string systemCacheLocation = Path.Combine(SYSTEM_SAVE_PATH, SYSTEM_CACHE_FILE);
 
             string stringifiedSystemCache = ReadContents(systemCacheLocation);
             if (stringifiedSystemCache == null)

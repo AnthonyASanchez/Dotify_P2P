@@ -232,12 +232,9 @@ namespace Dotify
 
             // Create a SystemCache object and save it to disk
             SystemCache systemCache = new SystemCache();
-            systemCache.isLoggedIn = true;
-            string systemCacheString = JsonUtil.Stringify(systemCache);
-            JsonUtil.SaveJsonToFile(systemCacheString, JsonUtil.SYSTEM_CACHE_FILE);
-
-            // Remove the Account Creation and Login page from the stack
-            Navigation.PopModalAsync(false);
+            systemCache.isLoggedIn = SystemCache.LOGGED_IN;
+            string json = JsonUtil.Stringify(systemCache);
+            JsonUtil.SaveJsonToFile(json, JsonUtil.SYSTEM_CACHE_FILE);
 
             // Move to the MainPage after account creation
             Navigation.PushModalAsync(new MainPage());
