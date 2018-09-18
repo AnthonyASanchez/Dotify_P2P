@@ -47,7 +47,7 @@ namespace Dotify
         private async void Button_Clicked_2(object sender, EventArgs e)
         {
             var main = new MainPage();
-            //await Navigation.PushModalAsync(main);
+            await Navigation.PushModalAsync(main);
         }
     }
 }
