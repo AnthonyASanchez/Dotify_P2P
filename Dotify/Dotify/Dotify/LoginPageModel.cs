@@ -63,6 +63,7 @@ namespace Dotify
         private async Task SignIn()
         {
             ProfileInfo user = JsonUtil.GetJsonUser();
+            //Check if the user has an account
             if(user == null)
             {
                 SetErrorMessage(2);
@@ -101,8 +102,8 @@ namespace Dotify
         //The user press the forgot password button
         private async Task ForgetPassword()
         {
-            SystemCache systemCache = JsonUtil.GetJsonSystemCache();
-            if (systemCache != null)
+            ProfileInfo user = JsonUtil.GetJsonUser();
+            if (user != null)
             {
                 await MyNavigation.PushModalAsync(new ForgetPassword());
             }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dotify.Search"
@@ -6,13 +6,17 @@
              BackgroundColor="#242424">
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="MainSearchBar" SearchButtonPressed="MainSearchBar_SearchButtonPressed"></SearchBar>
+            <SearchBar x:Name="MainSearchBar" 
+                       SearchButtonPressed="MainSearchBar_SearchButtonPressed"
+                       TextColor="White">
+                       
+            </SearchBar>
             <ListView x:Name="MainListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell
                     Text="{Binding Title}" 
-                    TextColor="Black"
+                    TextColor="White"
                     Detail="{Binding Artist}" 
                     DetailColor="Gray"
                         />
