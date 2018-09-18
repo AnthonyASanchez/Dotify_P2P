@@ -8,10 +8,12 @@ using Xamarin.Forms;
 
 namespace Dotify
 {
-	public class ForgetPasswordModel : ContentPage
+	public class ForgetPasswordModel : INotifyPropertyChanged
 	{
 
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
         public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
         private const string wrongPasswordError = "Either one or both of the answers are incorrect. Try again.";
         private const String answerString = "Answer";
@@ -24,19 +26,21 @@ namespace Dotify
 
         public INavigation MyNavigation { get; set; }
 
+        //Constructor for the ForgetPassword View Model
         public ForgetPasswordModel (INavigation navigation)
 		{
             MyNavigation = navigation;
+            ResetCommand = new Command(async () => await ResetPassword());
+            //Get the users security questions and display them on the forget password page
             securityQ1 = user.securityQuestion1;
             securityQ2 = user.securityQuestion2;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(SecurityQuestion1));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(SecurityQuestion2));     
-            ResetCommand = new Command(async () => await ResetPassword());
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(SecurityQuestion2));         
         }
 
         public Command ResetCommand { get; }
 
-       //The user press the reset button
+       //The user presses the verify
         private async Task ResetPassword()
         {
             //Hash the security answers
@@ -45,14 +49,16 @@ namespace Dotify
 
             //Get the security answers from the user profile
             //Compare it to the hash and if it matches, and allow the user to verify
-            if (user.securityAnswer1.Equals(hashPassword1) && user.securityAnswer2.Equals(hashPassword2))
+            if (!user.securityAnswer1.Equals(hashPassword1) || !user.securityAnswer2.Equals(hashPassword2))
             {
-                await Navigation.PushModalAsync(new ResetPassword());
+                //Display the passwords do not match error
+                currErrorMessage = wrongPasswordError;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(currErrorMessage)));
             }
             else
             {
-                currErrorMessage = wrongPasswordError;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(wrongPasswordError));
+                //send the user to the reset password page
+                await MyNavigation.PushModalAsync(new ResetPassword());
             }
         }
 
@@ -98,7 +104,7 @@ namespace Dotify
             set
             {
                 securityQ1 = user.securityQuestion1;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(SecurityQuestion1));
+                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(SecurityQuestion1));
             }
         }
 
@@ -110,7 +116,7 @@ namespace Dotify
             set
             {
                 securityQ2 = user.securityQuestion2;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(SecurityQuestion2));
+                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(SecurityQuestion2));
             }
         }
 
