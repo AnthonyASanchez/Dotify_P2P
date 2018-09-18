@@ -19,7 +19,7 @@ namespace Dotify
         // Where the system cache information is located
         public const string SYSTEM_CACHE_FILE = "system_cache.json";
         // Where to store music information
-        public const string SONG_JSON_FILE = "song.json";
+        public const string MUSIC_LIST_FILE = "music_list.json";
 
         /// <summary>
         /// Converts an object to a Json String instance
@@ -143,6 +143,20 @@ namespace Dotify
 
             // Type case the SystemCache object and return
             return ToObject<SystemCache>(stringifiedSystemCache);
+        }
+
+        public static MusicList GetJsonMusicList()
+        {
+            // The path to the stringified MusicLIst object
+            string musicListLocation = Path.Combine(SYSTEM_SAVE_PATH, MUSIC_LIST_FILE);
+
+            string stringifiedMusicList = ReadContents(musicListLocation);
+            if(stringifiedMusicList == null)
+            {
+                return null;
+            }
+
+            return ToObject<MusicList>(stringifiedMusicList);
         }
     }
 }

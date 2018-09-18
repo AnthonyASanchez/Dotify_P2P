@@ -101,6 +101,9 @@ namespace Dotify
         /// </summary>
         public static void InstallSongs()
         {
+            // Instantiate the music list
+            MusicList musicList = new MusicList();
+
             String[] songPath = { "Help!", "Come_Together", "Pumped_Up_Kicks", "Feel_Good_Inc", "September", "Hooked_on_a_Feeling", "Lucky_You" };
             String[] songFiles = { "samplehelp", "sample", "pumped_up_kicks", "feel_good_nc", "september", "blue_swede_hooked_on_a_feeling","lucky_you" };
             String[] photoFiles = { "beatles", "beatles", "ftp", "gor", "ewf", "kof", "em" };
@@ -130,12 +133,12 @@ namespace Dotify
                 String album = albums[i];
                 Song song = new Song(title, artist, album, photoBytes, musicBytes);
 
-                //Turns the List of Songs into a JSON file.
-                string jsonString = JsonUtil.Stringify(song);
-                Debug.WriteLine("Saving to " + songPath[i] + ".json");
-                JsonUtil.SaveJsonToFile(jsonString, songPath[i] + ".json");
-
+                musicList.AddSong(song);
             }
+
+            //Turns the List of Songs into a JSON file.
+            string jsonString = JsonUtil.Stringify(musicList);
+            JsonUtil.SaveJsonToFile(jsonString, JsonUtil.MUSIC_LIST_FILE);
         }
     }
 }
