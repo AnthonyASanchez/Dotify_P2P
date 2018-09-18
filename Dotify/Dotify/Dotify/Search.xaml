@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="MainSearchBar" 
-                       SearchButtonPressed="MainSearchBar_SearchButtonPressed"
+                       TextChanged="SearchBarTextChange"
                        TextColor="White">
                        
             </SearchBar>
@@ -18,8 +18,7 @@
                     Text="{Binding Title}" 
                     TextColor="White"
                     Detail="{Binding Artist}" 
-                    DetailColor="Gray"
-                        />
+                    DetailColor="Gray"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

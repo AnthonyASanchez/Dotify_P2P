@@ -63,7 +63,8 @@ namespace Dotify
         private async Task SignIn()
         {
             ProfileInfo user = JsonUtil.GetJsonUser();
-            //Check if the user has an account
+
+            //Check if user has an account
             if(user == null)
             {
                 SetErrorMessage(2);
