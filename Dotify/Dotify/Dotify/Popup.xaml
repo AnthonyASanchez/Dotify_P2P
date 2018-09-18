@@ -6,7 +6,7 @@
             Padding="20" HeightRequest="150" WidthRequest="150"
             BackgroundColor="#242424">
     <StackLayout Orientation="Vertical">
-        <Entry x:Name="PlaylistName" Placeholder="Playlist1" />
+        <Entry x:Name="PlaylistName" Placeholder="Playlist" PlaceholderColor="Black" TextColor="White"/>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
             <Button x:Name="button1" Text="Create" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Button_Clicked" />
             <Button x:Name="button2" Text="Delete" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Button_Clicked_1" />

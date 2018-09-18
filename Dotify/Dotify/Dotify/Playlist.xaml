@@ -7,7 +7,7 @@
              BackgroundColor="#242424">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Start" WidthRequest="100">
-            <Label Text="PlayList Information" />
+            <Label Text="PlayList Information" TextColor="White"/>
             <ListView x:Name ="PlaylistView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
