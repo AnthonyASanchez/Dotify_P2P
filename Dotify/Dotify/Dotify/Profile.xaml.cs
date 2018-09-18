@@ -38,15 +38,5 @@ namespace Dotify
             JsonUtil.SaveJsonToFile(jsonObject, JsonUtil.SYSTEM_CACHE_FILE);
             Navigation.PushModalAsync(new LoginPage());
         }
-
-
-        private void OnProfileButtonClicked(object sender, EventArgs args)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await DisplayAlert("Warning!", "An account already exists, creating an account" +
-                "will delete the existing account.", "OK");
-            });
-        }
     }
 }

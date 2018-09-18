@@ -47,7 +47,8 @@ namespace Dotify
                 installedSongs = true;
             }
 
-            Song s = JsonUtil.GetJsonSong("Help!");
+            MusicList musicList = JsonUtil.GetJsonMusicList();
+            Song s = musicList.MusicContainer[0];
             Stream songStream = new MemoryStream(s.Music);
             player.Load(songStream);
         }
