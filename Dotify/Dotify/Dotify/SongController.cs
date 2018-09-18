@@ -19,7 +19,7 @@ namespace Dotify
     static class SongController
     {
         //Audio player.
-        public static ISimpleAudioPlayer player;
+        public static ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
 
         //Queue for next songs to be played.
         static Queue<Song> songQueue;
@@ -34,14 +34,16 @@ namespace Dotify
         /// Constructor which call InstallSongs.
         /// </summary>
         static SongController(){
-            player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+
         }
 
-        //Loads default song.
-        public static async void LoadDefaultSong() {
+        /// <summary>
+        /// Loads the default songs if they are not yet installed.
+        /// </summary>
+        public static void LoadDefaultSong() {
             if (!installedSongs)
             {
-                await InstallSongsAsync();
+                InstallSongs();
                 installedSongs = true;
             }
 
@@ -107,7 +109,7 @@ namespace Dotify
             String[] titles = {  "Help!","Come Together", "Pumped Up Kicks", "Feel Good Inc", "September", "Hooked on a Feeling", "Lucky You" };
             String[] artists = {"The Beatles", "The Beatles","Foster the People", "Gorillaz", "Earth, Wind & Fire", "Blue Swede",  "Eminem" };
             String[] albums = {"Beatles", "Beatles", "Pumped Up Kicks", "Demon Days", "September", "Guardians of the Galaxy", "Kamikaze"};
-            for (int i = 0; i < songFiles.Length; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Debug.WriteLine(titles[i]);
                 //Gets the assemly where sample songs are located and Converts them into a byte array.
