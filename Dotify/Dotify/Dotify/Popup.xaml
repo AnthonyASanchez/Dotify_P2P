@@ -4,7 +4,7 @@
              x:Class="Dotify.Popup"
             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"        
             Padding="20" HeightRequest="150" WidthRequest="150"
-            BackgroundColor="Orange">
+            BackgroundColor="#242424">
     <StackLayout Orientation="Vertical">
         <Entry x:Name="PlaylistName" Placeholder="Playlist1" />
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
