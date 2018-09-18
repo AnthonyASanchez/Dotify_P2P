@@ -33,8 +33,26 @@ namespace Dotify
             string keyword = MainSearchBar.Text;
             IEnumerable<Song> results = songs.Where(s => s.Album.Contains(keyword) || s.Artist.Contains(keyword) || s.Title.Contains(keyword));
             //IEnumerable<Song> searchResults = results;
+
             MainListView.ItemsSource = results;
             
+        }
+
+        private void searchForSong()
+        {
+            //Get the string that the user has entered in the search bar
+            string keyword = MainSearchBar.Text;
+
+            //Deserialize the JSON file (SONG_JSON_FILE)
+
+            //Look through it 
+            //var data = File.ReadAlltext(JsonUtil.SONG_JSON_FILE);
+            //List<Song> database = JsonConvert.DeserializeObject<List<Song>>(data);
+
+            //JsonUtil.ToObject<Song>(JsonUtil.SONG_JSON_FILE);
+
+            //var results = database.Where(i => i.Track.track_category.ToLower().Contains(keyword)).Select(t => t.Track.track_id);
+            //Search through this file for a song that matches the one that the user entered.
         }
     }
 }

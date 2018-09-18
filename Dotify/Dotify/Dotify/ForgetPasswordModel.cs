@@ -53,7 +53,7 @@ namespace Dotify
             {
                 //Display the passwords do not match error
                 currErrorMessage = wrongPasswordError;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(currErrorMessage)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(currErrorMessage));
             }
             else
             {
