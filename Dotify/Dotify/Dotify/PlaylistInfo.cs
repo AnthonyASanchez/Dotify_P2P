@@ -20,6 +20,21 @@ namespace Dotify
             get { return listName; }
             set { listName = value; }
         }
+        public override bool Equals(object obj)
+        {
+            // Check for null  
+            if (ReferenceEquals(obj, null))
+                return false;
+            // Check for same reference  
+            if (ReferenceEquals(this, obj))
+                return true;
+            var playlist = (PlaylistInfo)obj;
+            return this.ListName == playlist.ListName;
+        }
+        public override int GetHashCode()
+        {
+            return ListName.GetHashCode();
+        }
        
     }
 }
