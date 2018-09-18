@@ -28,31 +28,27 @@ namespace Dotify
             MainListView.ItemsSource = songs;
 		}
 
-        private void MainSearchBar_SearchButtonPressed(object sender, EventArgs e)
-        {
-            string keyword = MainSearchBar.Text;
-            IEnumerable<Song> results = songs.Where(s => s.Album.Contains(keyword) || s.Artist.Contains(keyword) || s.Title.Contains(keyword));
+ //       private void MainSearchBar_SearchButtonPressed(object sender, EventArgs e)
+ //       {
+ //           string keyword = MainSearchBar.Text;
+ //          IEnumerable<Song> results = songs.Where(s => s.Album.Contains(keyword) || s.Artist.Contains(keyword) || s.Title.Contains(keyword));
             //IEnumerable<Song> searchResults = results;
 
-            MainListView.ItemsSource = results;
+ //           MainListView.ItemsSource = results;
             
-        }
+ //       }
 
-        private void searchForSong()
+        private void MainSearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             //Get the string that the user has entered in the search bar
             string keyword = MainSearchBar.Text;
 
-            //Deserialize the JSON file (SONG_JSON_FILE)
+            //Get the music list that contains the songs
+            MusicList musicList = JsonUtil.GetJsonMusicList();
 
-            //Look through it 
-            //var data = File.ReadAlltext(JsonUtil.SONG_JSON_FILE);
-            //List<Song> database = JsonConvert.DeserializeObject<List<Song>>(data);
+            IEnumerable<Song> results = musicList.MusicContainer.Where(s => s.Album.Contains(keyword) || s.Artist.Contains(keyword) || s.Title.Contains(keyword));
 
-            //JsonUtil.ToObject<Song>(JsonUtil.SONG_JSON_FILE);
-
-            //var results = database.Where(i => i.Track.track_category.ToLower().Contains(keyword)).Select(t => t.Track.track_id);
-            //Search through this file for a song that matches the one that the user entered.
+            MainListView.ItemsSource = results;
         }
     }
 }
