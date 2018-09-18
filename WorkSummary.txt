@@ -1,0 +1,13 @@
+﻿Our application (app) allows users to play a song that exists in a text file.
+In order to play a song, the user has to create an account by selecting "Sign Up" on the login page. 
+Once all fields have been enterd and the account has been created, the app will navigate to the main page, consisting of a search page, playlist page
+and profile information (settings) page. The search page allows users to search through a set of songs. Playlist page will display an empty list of playlists.
+The user will have to select "Create Playlist" in order for the list to be displayed. When the user selects "Create Playlist",
+the app he/she will enter a playlist name and then select "Create". User can repeat the process until he/she selects
+"Close." The same thing applies for "Delete Playlist": delete as many playlists as the user wants until "Close"
+is clicked. The settings page is where the user can edit their account information or log out.
+
+If the user wants to log back into the app after logging out, he/she will have to enter their account information. If one or both of
+the required fields had incorrect information, the user will have to select "Forget Password" and go through some security questions
+in order to reset his/her password.
+
