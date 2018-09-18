@@ -92,7 +92,11 @@ namespace Dotify
         //The user press the forgot password button
         private async Task ForgetPassword()
         {
-            await MyNavigation.PushModalAsync(new ForgetPassword());
+            SystemCache systemCache = JsonUtil.GetJsonSystemCache();
+            if (systemCache != null)
+            {
+                await MyNavigation.PushModalAsync(new ForgetPassword());
+            }
         }
 
         public String TestLabel
