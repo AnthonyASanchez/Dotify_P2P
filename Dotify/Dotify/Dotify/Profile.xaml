@@ -8,15 +8,27 @@
     <ContentPage.Content>
         <ScrollView>
             <RelativeLayout>
-                <RelativeLayout.BindingContext>
-                    <local:ProfileViewModel />
-                </RelativeLayout.BindingContext>
                 <BoxView Color="Gray" 
                          HeightRequest="100" 
                          RelativeLayout.WidthConstraint="{ConstraintExpression 
                          Type=RelativeToParent, 
                          Property=Width, 
                          Factor=1}" />
+                <Button BorderRadius="35" 
+                         x:Name="imageCircleBack" 
+                         BackgroundColor="#242424" 
+                         HeightRequest="70" 
+                         WidthRequest="70" 
+                         RelativeLayout.XConstraint="{ConstraintExpression 
+                         Type=RelativeToParent, 
+                         Property=Width, 
+                         Factor=.5, 
+                         Constant = -35 }" 
+                         RelativeLayout.YConstraint="{ConstraintExpression 
+                         Type=RelativeToParent, 
+                         Factor=0, 
+                         Property=Y, 
+                         Constant=70}" />
                 <Button BorderRadius="30" 
                         BackgroundColor="#242424" 
                         HeightRequest="60" 
@@ -31,8 +43,7 @@
                         Type=RelativeToParent, 
                         Factor=0, 
                         Property=Y, 
-                        Constant=75}" 
-                        Text="Hello"/>
+                        Constant=75}"/>
                 <Label Text="User Name" 
                        TextColor="LightGray"
                        x:Name="ProfileUsernameLabel"
@@ -192,6 +203,22 @@
                            Property=Height, 
                            Factor=0, 
                            Constant=50}" />
+                </RelativeLayout>
+                <RelativeLayout
+                    Padding="5,0,0,0">
+                    <Button
+                        Text="Log Out"
+                        RelativeLayout.XConstraint="{ConstraintExpression
+                        Type=RelativeToParent,
+                        Property=Width,
+                        Factor=0,
+                        Constant=5}"
+                        RelativeLayout.YConstraint="{ConstraintExpression 
+                        Type=RelativeToParent, 
+                        Property=Height, 
+                        Factor=0, 
+                        Constant=430}" 
+                        Clicked="OnLogOutButtonClicked"/>
                 </RelativeLayout>
             </RelativeLayout>
         </ScrollView>

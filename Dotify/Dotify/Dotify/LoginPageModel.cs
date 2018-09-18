@@ -11,6 +11,7 @@ namespace Dotify
 
         private const string emptyEntryError = "Username or Password cannot be empty";
         private const string wrongPasswordError = "Invalid Username or Password";
+        private const string noAccount = "Account does not exist";
         private const String userNameString = "Username";
         private const String passwordString = "Password";
         private String password = string.Empty;
@@ -52,6 +53,9 @@ namespace Dotify
                 case 1:
                     currErrorMessage = wrongPasswordError;
                     break;
+                case 2:
+                    currErrorMessage = noAccount;
+                    break;
             }
         }
 
@@ -59,8 +63,14 @@ namespace Dotify
         private async Task SignIn()
         {
             ProfileInfo user = JsonUtil.GetJsonUser();
+            //Check if the user has an account
+            if(user == null)
+            {
+                SetErrorMessage(2);
+                OnPropertyChanged(nameof(ErrorLabelMessage));
+            }
             //If the user didn't enter anything in username or password
-            if (String.IsNullOrWhiteSpace(username) || String.IsNullOrWhiteSpace(password))
+            else if (String.IsNullOrWhiteSpace(username) || String.IsNullOrWhiteSpace(password))
             {
                 //Empty username or password entry
                 SetErrorMessage(0);
@@ -92,7 +102,11 @@ namespace Dotify
         //The user press the forgot password button
         private async Task ForgetPassword()
         {
-            await MyNavigation.PushModalAsync(new ForgetPassword());
+            ProfileInfo user = JsonUtil.GetJsonUser();
+            if (user != null)
+            {
+                await MyNavigation.PushModalAsync(new ForgetPassword());
+            }
         }
 
         public String TestLabel

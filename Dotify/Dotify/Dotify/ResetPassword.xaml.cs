@@ -60,6 +60,7 @@ namespace Dotify
         //Allows verify button to be clicked if the fields are not empty
         private void ChangeVerifyButton()
         {
+
             if (passwordEntry1Empty || passwordEntry2Empty)
             {
                 resetPasswordButton.IsEnabled = false;
@@ -72,25 +73,39 @@ namespace Dotify
             }
         }
 
+        //If the verify button is clicked, check to see if the passwords match. If true, allow the user to
+        //reset the password, otherwise ask the user to choose a better password.
         private void VerifyButtonClicked(object sender, EventArgs e)
         {
+            Regex passwordRegex = new Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$");
             //If passwords match and they meet password requirements
-            if (newPasswordEntry == verifyNewPasswordEntry)
+            NotComplexError.IsVisible = false;
+            NotMatchingError.IsVisible = false;
+            if (!passwordRegex.IsMatch(newPasswordEntry.Text) || !passwordRegex.IsMatch(verifyNewPasswordEntry.Text))
             {
-                //Save the password
-                String password = verifyNewPasswordEntry.Text;
-                JsonUtil.ToObject<ProfileInfo>(password);
-                //Send the user to the main page
+                NotComplexError.IsVisible = true;
+            }
+            else if (newPasswordEntry.Text.Equals(verifyNewPasswordEntry.Text))
+            {
+                //Save the password to JSON file
+                //Get the password that the user entered and hash it
+                String passwordEntered = Security.Hash(verifyNewPasswordEntry.Text);
+                //set the user.password to the new hashed passwor
+                user.password = passwordEntered;
+                //Stringy the profile info object with the saved changes
+                String stringifiedPass = JsonUtil.Stringify(user);
+                //Save to Json file
+                JsonUtil.SaveJsonToFile(stringifiedPass, JsonUtil.USER_JSON_FILE);
+                
+                //Send the user to the login page
                 Navigation.PopModalAsync(false);
-                Navigation.PushModalAsync(new MainPage());
+                Navigation.PushModalAsync(new LoginPage());
             }
             else
             {
-                //Ask the user to choose a better password
+                NotComplexError.IsVisible = false;
                 NotMatchingError.IsVisible = true;
             }
         }
-
-
     }
 }

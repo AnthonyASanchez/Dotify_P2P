@@ -23,8 +23,30 @@ namespace Dotify
             ProfileUsernameLabel.Text = user.username;
             // Initialize the date that the user has joined in ProfileDateJoinedEntry
             ProfileDateJoinedEntry.Text = user.dateJoined.ToShortDateString();
+        }
 
-            
-		}
-	}
+        /// <summary>
+        /// Event of when the user presses the button
+        /// </summary>
+        /// <param name="sender">The sending object</param>
+        /// <param name="args">The event</param>
+        private void OnLogOutButtonClicked(object sender, EventArgs args)
+        {
+            SystemCache systemCache = JsonUtil.GetJsonSystemCache();
+            systemCache.isLoggedIn = SystemCache.LOGGED_OUT;
+            string jsonObject = JsonUtil.Stringify(systemCache);
+            JsonUtil.SaveJsonToFile(jsonObject, JsonUtil.SYSTEM_CACHE_FILE);
+            Navigation.PushModalAsync(new LoginPage());
+        }
+
+
+        private void OnProfileButtonClicked(object sender, EventArgs args)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await DisplayAlert("Warning!", "An account already exists, creating an account" +
+                "will delete the existing account.", "OK");
+            });
+        }
+    }
 }
