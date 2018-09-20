@@ -110,11 +110,6 @@ namespace Dotify
             }
         }
 
-        public String TestLabel
-        {
-            get { return $"The username is {Username}"; }
-        }
-
         //Set place holder for username entry
         public string UsernamePlaceHolder
         {

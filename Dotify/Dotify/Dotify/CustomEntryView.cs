@@ -7,5 +7,6 @@ namespace Dotify
 {
     public class CustomEntryView : Entry
     {
+
     }
 }

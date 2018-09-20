@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Dotify.LoginPage"
              BackgroundColor="#242424"
+             xmlns:local="clr-namespace:Dotify; assembly=Dotify"
              Title="Log In Page">
 
     <StackLayout>
@@ -13,26 +14,66 @@
             FontSize="50"
             Margin="0, 40, 0, 15"
             TextColor="White"/>
-
+        
         <Label
             Text="{Binding ErrorLabelMessage}"
             TextColor="Red"
             HorizontalOptions="Center"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
 
-        <Entry 
-            Placeholder="{Binding UsernamePlaceHolder}"
-            Text ="{Binding Username}"
-            TextColor="White"
-            PlaceholderColor="White"
-            Margin="25, 15, 25, 0"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Entry 
-            Placeholder="{Binding PasswordPlaceHolder}"
-            Text ="{Binding Password}"
-            TextColor="White"
-            PlaceholderColor="White"
-            Margin="25, 0, 25, 0"
-            IsPassword="True"/>
+            <Label
+                x:Name="UsernameLabel"
+                Text="{Binding UsernamePlaceHolder}"
+                VerticalOptions="EndAndExpand"
+                TextColor="White"
+                Margin="20, 0, 0, 0"
+                Grid.Row="0"
+                Grid.Column="0"/>
+            <Entry
+                x:Name="UsernameEntry"
+                Placeholder="{Binding UsernamePlaceHolder}"
+                Text ="{Binding Username}"
+                TextColor="White"
+                PlaceholderColor="White"
+                Focused="UsernameEntryFocused"
+                Unfocused="UsernameEntryUnfocused"
+                VerticalOptions="End"
+                Margin="15, 0, 15, 0"
+                Grid.Row="1"
+                Grid.Column="0"/>
+            <Label
+                x:Name="PasswordLabel"
+                Text="{Binding PasswordPlaceHolder}"
+                VerticalOptions="EndAndExpand"
+                TextColor="White"
+                Margin="20, 0, 0, 0"
+                Grid.Row="2"
+                Grid.Column="0"/>
+
+            <Entry
+                x:Name="PasswordEntry"
+                Placeholder="{Binding PasswordPlaceHolder}"
+                Text ="{Binding Password}"
+                TextColor="White"
+                PlaceholderColor="White"
+                Focused="PasswordEntryFocused"
+                Unfocused="PasswordEntryUnfocused"
+                VerticalOptions="End"
+                Margin="15, 0, 15, 0"
+                Grid.Row="3"
+                Grid.Column="0"/>
+
+        </Grid>
 
         <Button 
             Text="Forgot password?"
@@ -61,6 +102,7 @@
             BackgroundColor="Gray"
             TextColor="White"/>
         
+
     </StackLayout>
 
 </ContentPage>

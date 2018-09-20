@@ -6,60 +6,44 @@
              BackgroundColor="#242424">
 
     <StackLayout>
-        <RelativeLayout
-            VerticalOptions="Start">
-            <BoxView
-                Color="DarkGray"
-                RelativeLayout.YConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Height,
-                Factor=0,
-                Constant=0}"
-                RelativeLayout.WidthConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Width}"
-             />
+
+        <Grid BackgroundColor="DarkGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
             <Button
                 x:Name="CreateAccountBackButton"
                 BackgroundColor="Transparent"
+                HorizontalOptions="Start"
                 Text="&#60; Back"
                 TextColor="Black"
-                HeightRequest="40"
-                RelativeLayout.YConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Y,
-                Factor=1,
-                Constant=1}"
-                RelativeLayout.XConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=X,
-                Factor=1,
-                Constant=-10}"
+                Padding="0,0,15,0"
+                WidthRequest="80"
                 Clicked="BackButtonClicked"
-                />
+                Margin="0, 0, 0, 0"
+                Grid.Row="0"
+                Grid.Column="0"/>
+
             <Button
                 x:Name="CreateAccountButton"
                 BackgroundColor="Transparent"
                 Text="Create"
                 TextColor="Gray"
-                HeightRequest="40"
-                RelativeLayout.YConstraint="{ConstraintExpression
-                    Type=RelativeToParent,
-                    Property=Y,
-                    Factor=1,
-                    Constant=1
-                }"
-                RelativeLayout.XConstraint="{ConstraintExpression
-                    Type=RelativeToParent,
-                    Property=X,
-                    Factor=1,
-                    Constant=290
-                }"
+                Padding="0, 0, 0, 0"
+                WidthRequest="80"
+                HorizontalOptions="EndAndExpand"
                 Clicked="CreateAccountButtonClicked"
-                IsEnabled="False"/>
-            
-        </RelativeLayout>
-
+                IsEnabled="False"
+                Grid.Row="0"
+                Grid.Column="1"/>
+        </Grid>
+        
         <StackLayout
             Margin="0, 10, 0, 0">
             <Entry
